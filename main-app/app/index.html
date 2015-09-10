@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="Tombola.MyModule">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="thirdparty/angular/angular.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+
+<body ng-controller="MyController">
+
+<h1>{{textMessage}}</h1>
+
+<img src="images/github.png">
+
+TEST TO SEE IF BUILDS
+
+<audio controls loop>
+    <source src="sounds/keyboard.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    angular.module('Tombola.MyModule', [])
+            .controller('MyController', function($scope) {
+                $scope.textMessage = "Hello Liam";
+            })
+</script>
+
+</body>
+</html>
