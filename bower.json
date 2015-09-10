@@ -1,5 +1,5 @@
 {
-  "name": "Noughts-And-Crosses",
+  "name": "npm bower install angular --save",
   "version": "0.0.0",
   "homepage": "https://github.com/LiamArmour/Noughts-and-Crosses",
   "authors": [
@@ -16,5 +16,15 @@
     "anular",
     "app"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5"
+  }
 }
