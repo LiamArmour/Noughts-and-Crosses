@@ -13,7 +13,24 @@
             jshint:javaTask,
             concat:javaTask,
             clean:cleanTask,
-    
+            watch:{
+                javascript: {
+                    files: 'main-app/app/scripts/**/*.js',
+                    tasks:'jsFiles',
+                    spawn:false
+                },
+                css: {
+                    files: 'main-app/app/less/**/*.less',
+                    tasks:'lessFiles',
+                    spawn:false
+                },
+                html:{
+                    files:'main-app/app/index.html',
+                    tasks:'editHtml',
+                    spawn:false
+                }
+
+            }
 
         });
         grunt.loadNpmTasks('grunt-contrib-copy');
