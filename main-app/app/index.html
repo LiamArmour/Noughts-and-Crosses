@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="Tombola.MyModule">
+<html ng-app="Tombola.Games.NoughtsAndCrosses">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -7,25 +7,20 @@
     <script src="scripts/app.js"></script>
 </head>
 
-<body ng-controller="MyController">
+<body ng-controller="ScopeTest">
 
 <h1>{{textMessage}}</h1>
 
 <img src="images/github.png">
 
-GAME BOARD
+GAME BOARD! lIAM
 
 <audio controls loop>
     <source src="sounds/keyboard.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
-<script>
-    angular.module('Tombola.MyModule', [])
-            .controller('MyController', function($scope) {
-                $scope.textMessage = "Hello Liam";
-            })
-</script>
+
 
 </body>
 </html>
