@@ -11,19 +11,17 @@
             lesslint: lessTask,
             less: lessTask,
             jshint: jsLintTask,
+            concat: jsLintTask
             });
         )
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-lesslint');
         grunt.loadNpmTasks('grunt-comtrib-less');
-
-        grunt.loadNpmTasks('jshint-stylish');
         grunt.loadNpmTasks('grunt-contrib-jshint');
+        grunt.loadNpmTasks('grunt-contrib-concat');
 
         grunt.registerTask('lessFiles', ['lesslint', 'less'];
-
-        grunt.registerTask('javascriptFiles', ['jshint'];
-
+        grunt.registerTask('javascriptFiles', ['jshint','concat:concat'];
         grunt.registerTask('default', ['copy', 'lessFiles']);
     };
 })();
