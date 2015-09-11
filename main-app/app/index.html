@@ -1,31 +1,61 @@
 <!DOCTYPE html>
-<html ng-app="Tombola.MyModule">
+<html ng-app="Tombola.Games.NoughtsAndCrosses">
 <head>
     <meta charset="UTF-8">
     <title></title>
     <script src="thirdparty/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
-<body ng-controller="MyController">
+<body ng-controller="GameboardTextController">
 
-<h1>{{textMessage}}</h1>
+<h1>{{gameTitle}}</h1>
 
-<img src="images/github.png">
+<h2>TEMP: Gamebaord: {{gameBoard}}</h2>
 
-TEST TO SEE IF BUILDS
 
-<audio controls loop>
-    <source src="sounds/keyboard.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+<div class="table">
+    <div class="row">
+        <div class="cell">
+            <p>Row 1 Column 1</p>
+        </div>
+        <div class="cell">
+            <p>Row 1 Column 2</p>
+        </div>
+        <div class="cell">
+            <p>Row 1 Column 3</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            <p>Row 2 Column 1</p>
+        </div>
+        <div class="cell">
+            <p>Row 2 Column 2</p>
+        </div>
+        <div class="cell">
+            <p>Row 2 Column 3</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            <p>Row 3 Column 1</p>
+        </div>
+        <div class="cell">
+            <p>Row 3 Column 2</p>
+        </div>
+        <div class="cell">
+            <p>Row 3 Column 3</p>
+        </div>
+    </div>
+</div>
 
-<script>
-    angular.module('Tombola.MyModule', [])
-            .controller('MyController', function($scope) {
-                $scope.textMessage = "Hello Liam";
-            })
-</script>
+<div class="players">
+    Player One: {{playerOne}} -- Player Two: {{playerTwo}}
+</div>
+
+
 
 </body>
 </html>

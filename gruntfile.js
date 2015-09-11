@@ -43,6 +43,6 @@
         grunt.registerTask('editHtml',['clean:html','copy:html']);
         grunt.registerTask('lessFiles',['lesslint','clean:css','less']);
         grunt.registerTask('jsFiles',['jshint:gruntlint','clean:javascript','concat:concat']);
-        grunt.registerTask('default',['editHtml', 'lessFiles', 'jsFiles', 'watch']);
+        grunt.registerTask('default',['copy', 'editHtml', 'lessFiles', 'jsFiles', 'watch']);
     };
 })();
