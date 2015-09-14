@@ -22,30 +22,26 @@
 <h1>{{gameTitle}}</h1>
 
 
-<div ng-hide="mustShow" align="center" class="playerSelection">
+<div ng-hide="mustShow" class="playerSelection">
 
     <h2>Player Selection</h2>
 
-    <select name="Choose Player One" ng-model="PlayerOne">
-        <option value="Human">Human</option>
-        <option value="Computer">Computer</option>
-    </select>
+    <div class="left">
+        <div class='playerHuman' value="Human" ng-model="playerOne"></div>
+        <div class='playerComputer' value="Computer" ng-model="playerOne"></div>
+    </div>
 
-    Vs
+    <div class="right">
+        <div class='playerHuman' value="Human" ng-model="playerTwo"></div>
+        <div class='playerComputer' value="Computer" ng-model="playerTwo"></div>
+    </div>
 
-    <select name="Choose Player Two" ng-model="PlayerTwo">
-        <option value="Human">Human</option>
-        <option value="Computer">Computer</option>
-    </select>
 
     <br />
 
     <input type="button" value="Play!" ng-click="mustShow=true" ng-hide="mustShow">
 
     <br />
-
-    <div class='playerHuman'></div>
-    <div class='playerComputer'></div>
 
 </div>
 
@@ -58,35 +54,26 @@
 <div class="table" id="board" >
     <div class="row">
         <div class="cell player{{gameBoard[0]}}" ng-click="takeTurn(0)" >
-            <img ng-src="images/blank.png" class>
         </div>
         <div class="cell player{{gameBoard[1]}}" ng-click="takeTurn(1)">
-            <img ng-src="images/blank.png">
         </div>
         <div class="cell player{{gameBoard[2]}}" ng-click="takeTurn(2)">
-            <img ng-src="images/blank.png">
         </div>
     </div>
     <div class="row">
         <div class="cell player{{gameBoard[3]}}" ng-click="takeTurn(3)">
-            <img ng-src="images/blank.png">
         </div>
         <div class="cell player{{gameBoard[4]}}" ng-click="takeTurn(4)">
-            <img ng-src="images/blank.png">
         </div>
         <div class="cell player{{gameBoard[5]}}" ng-click="takeTurn(5)">
-            <img ng-src="images/blank.png">
         </div>
     </div>
     <div class="row">
         <div class="cell player{{gameBoard[6]}}" ng-click="takeTurn(6)">
-            <img ng-src="images/blank.png">
         </div>
         <div class="cell player{{gameBoard[7]}}" ng-click="takeTurn(7)">
-            <img ng-src="images/blank.png">
         </div>
         <div class="cell player{{gameBoard[8]}}" ng-click="takeTurn(8)">
-            <img ng-src="images/blank.png">
         </div>
     </div>
 </div>
