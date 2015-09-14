@@ -12,47 +12,60 @@
 
 <h1>{{gameTitle}}</h1>
 
+
+<div ng-hide="mustShow">
+
+    <h2>Player Selection</h2>
+    <input type="button" value="Play!" ng-click="mustShow=true" ng-hide="mustShow">
+
+</div>
+
+
+<div ng-show="mustShow">
+
 <h2>TEMP: Gamebaord: {{gameBoard}}</h2>
 
 
-<div class="table">
+<div class="table" id="board" >
     <div class="row">
         <div class="cell" ng-click="takeTurn(0)">
-            <p>Row 1 Column 1</p>
+            <img ng-src="images/blank.png" class>
         </div>
         <div class="cell" ng-click="takeTurn(1)">
-            <p>Row 1 Column 2</p>
+            <img ng-src="images/blank.png">
         </div>
         <div class="cell" ng-click="takeTurn(2)">
-            <p>Row 1 Column 3</p>
+            <img ng-src="images/blank.png">
         </div>
     </div>
     <div class="row">
         <div class="cell" ng-click="takeTurn(3)">
-            <p>Row 2 Column 1</p>
+            <img ng-src="images/blank.png">
         </div>
         <div class="cell" ng-click="takeTurn(4)">
-            <p>Row 2 Column 2</p>
+            <img ng-src="images/blank.png">
         </div>
         <div class="cell" ng-click="takeTurn(5)">
-            <p>Row 2 Column 3</p>
+            <img ng-src="images/blank.png">
         </div>
     </div>
     <div class="row">
         <div class="cell" ng-click="takeTurn(6)">
-            <p>Row 3 Column 1</p>
+            <img ng-src="images/blank.png">
         </div>
         <div class="cell" ng-click="takeTurn(7)">
-            <p>Row 3 Column 2</p>
+            <img ng-src="images/blank.png">
         </div>
         <div class="cell" ng-click="takeTurn(8)">
-            <p>Row 3 Column 3</p>
+            <img ng-src="images/blank.png">
         </div>
     </div>
 </div>
 
 <div class="players">
     Player One: {{playerOne}} -- Player Two: {{playerTwo}}
+</div>
+
 </div>
 
 
