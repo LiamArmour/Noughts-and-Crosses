@@ -1,9 +1,8 @@
 (function () {
     'use strict';
-    angular.module('Tombola.NoughtsAndCrosses.Proxy')
+    angular.module('Tombola.Games.NoughtsAndCrosses.Proxy')
         .constant('proxyConstants', {
             newGameURL : "http://noughtsandcrosses:35000/api/v1.0/newgame",
-            takeTurnURL : "http://noughtsandcrosses:35000/api/v1.0/makemove"
+            makeMoveURL : "http://noughtsandcrosses:35000/api/v1.0/makemove"
         });
-
 })();
