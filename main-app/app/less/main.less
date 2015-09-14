@@ -57,19 +57,70 @@ a img {
 
 @backgroundColour: #5B83AD;
 @cellColour: #1E6A9F;
+@InfoBackground: #ccc;
 
 body {
   background: url("../images/minion-background.jpg");
+  .players
+  {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;font-weight: bold;
+    font-size: 26px;
+  }
+
+
+  .playerSelection {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    background: @InfoBackground;
+  }
 }
+
 h1 {
   text-align: center;
   padding-top: 10px;
   font-size: 42px;
 }
-
 h2 {
   text-align: center;
 }
+
+
+nav {
+  width: 100%;
+  background: #f0f0f0;
+  ul {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      float: left;
+      padding-left: 35px;
+      padding-right: 35px;
+      text-align: center;
+      border-left: 1px solid #fff;
+      border-right: 1px solid @InfoBackground;
+      a {
+        display: block;
+        text-decoration: none;
+        color: #616161;
+        padding: 10px 0;
+      }
+    }
+    li:first-child {
+      border-left: none;
+    }
+  }
+}
+
+
+
+
 
 .table
 {
@@ -81,25 +132,47 @@ h2 {
 {
   display: table-row;
 }
-.cell
-{
+.cell {
   display: table-cell;
   border: solid;
   border-width: thin;
-  padding: 50px;
+
   background: @cellColour;
 }
-
-.players
-{
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15px;font-weight: bold;
-  font-size: 26px;
+.cell {
+  width: 200px;
+  height: 200px;
 }
 
-.row img {
-  width: 80px;
-  height: 80px;
+
+
+
+
+.player1, .player2 {
+  background-image: url('../images/minionSprite.png');
+}
+.player1 {
+  width: 200px;
+  height: 200px;
+  background-position: 0 -210px;
+}
+.player2 {
+  width: 200px;
+  height: 200px;
+  background-position: 0 0;
+}
+
+
+.playerHuman, .playerComputer {
+  background-image: url('../images/players.png');
+}
+.playerHuman {
+  width: 300px;
+  height: 250px;
+  background-position: 0 0;
+}
+.playerComputer {
+  width: 300px;
+  height: 250px;
+  background-position: 0 -260px;
 }

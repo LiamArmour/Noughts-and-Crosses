@@ -7,8 +7,8 @@
             currentPlayer = '1';
 
             $scope.gameTitle = "Noughts and Crosses";
-            $scope.playerOne = "Liam";
-            $scope.playerTwo = "Armour";
+            $scope.playerOne = "PlayerOne";
+            $scope.playerTwo = "PlayerTwo";
             $scope.gameBoard='000000000';
             $scope.takeTurn = function (index){
                 if ($scope.gameBoard.charAt(index)!=="0"){
@@ -16,12 +16,12 @@
                 }
                 if (currentPlayer === '1'){
                     $scope.gameBoard= setCharAt($scope.gameBoard ,index,'1');
-                    document.getElementsByTagName('img')[index].setAttribute("src", "images/goodMinion.png");
+
                     currentPlayer = '2';
                 }
                 else {
                     $scope.gameBoard = setCharAt($scope.gameBoard, index, '2');
-                    document.getElementsByTagName('img')[index].setAttribute("src", "images/badMinion.png");
+
                     currentPlayer = '1';
                 }
             };
