@@ -2,7 +2,7 @@
 <html ng-app="Tombola.Games.NoughtsAndCrosses">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>{{gameTitle}}</title>
     <script src="thirdparty/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -12,7 +12,7 @@
 
 <nav>
     <ul>
-        <li><a href="#">Start Over</a></li>
+        <li><a href="index.html">Start Over</a></li>
         <li><a href="#">Rules</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
@@ -26,31 +26,31 @@
 
     <h2>Player Selection</h2>
 
-    <select ng-model="playerOne">
-        <option value="human" selected="selected">Human</option>
-        <option value="pre-trained">Computer</option>
-        <option value="random">Random</option>
-    </select>
+    <div ng-click="selectPlayer(1)" class="{{playerOne}}">
 
-    <select  ng-model="playerTwo">
-        <option value="human" selected="selected">Human</option>
-        <option value="pre-trained">Computer</option>
-        <option value="random">Random</option>
-    </select>
+    </div>
 
+    <div ng-click="selectPlayer(2)" class="{{playerTwo}}">
 
-        <div class='playerHuman' value="Human"></div>
-        <div class='playerComputer' value="Computer"></div>
-        <div class='playerRandom' value="Random"></div>
+    </div>
 
+    <div>
+        <select ng-model="playerOne">
+            <option value="human" selected="selected">Human</option>
+            <option value="pre-trained">Computer</option>
+            <option value="random">Random</option>
+        </select>
 
+        <select  ng-model="playerTwo">
+            <option value="human" selected="selected">Human</option>
+            <option value="pre-trained">Computer</option>
+            <option value="random">Random</option>
+        </select>
+    </div>
 
-
-    <br />
-
-    <input type="button" value="Play!" ng-click="makeNewGame()" ng-hide="mustShow">
-
-    <br />
+    <div>
+        <input type="button" value="Play!" ng-click="makeNewGame()" ng-hide="mustShow">
+    </div>
 
 </div>
 

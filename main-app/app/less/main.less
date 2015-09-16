@@ -71,14 +71,6 @@ body {
   }
 }
 
-.playerSelection {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
-  background: @InfoBackground;
-}
-
 h1 {
   text-align: center;
   padding-top: 10px;
@@ -162,22 +154,30 @@ nav {
 }
 
 
-.playerHuman, .playerComputer, .playerRandom {
+.playerSelection {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  width: 610px;
+  text-align: center;
+  background: @InfoBackground;
+}
+.human, .pre-trained, .random {
   background-image: url('../images/players-new.png');
 }
-.playerHuman {
+.human {
   display: inline-block;
   width: 300px;
   height: 250px;
   background-position: 0 0;
 }
-.playerComputer {
+.pre-trained {
   display: inline-block;
   width: 300px;
   height: 250px;
   background-position: 0 -260px;
 }
-.playerRandom {
+.random {
   display: inline-block;
   width: 300px;
   height: 250px;
