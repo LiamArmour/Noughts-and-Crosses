@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
-<body ng-controller="GameboardTextController">
+<body ng-controller="GameboardController">
 
 <nav>
     <ul>
@@ -26,20 +26,29 @@
 
     <h2>Player Selection</h2>
 
-    <div class="left">
-        <div class='playerHuman' value="Human" ng-model="playerOne"></div>
-        <div class='playerComputer' value="Computer" ng-model="playerOne"></div>
-    </div>
+    <select ng-model="playerOne">
+        <option value="human" selected="selected">Human</option>
+        <option value="pre-trained">Computer</option>
+        <option value="random">Random</option>
+    </select>
 
-    <div class="right">
-        <div class='playerHuman' value="Human" ng-model="playerTwo"></div>
-        <div class='playerComputer' value="Computer" ng-model="playerTwo"></div>
-    </div>
+    <select  ng-model="playerTwo">
+        <option value="human" selected="selected">Human</option>
+        <option value="pre-trained">Computer</option>
+        <option value="random">Random</option>
+    </select>
+
+
+        <div class='playerHuman' value="Human"></div>
+        <div class='playerComputer' value="Computer"></div>
+        <div class='playerRandom' value="Random"></div>
+
+
 
 
     <br />
 
-    <input type="button" value="Play!" ng-click="mustShow=true" ng-hide="mustShow">
+    <input type="button" value="Play!" ng-click="makeNewGame()" ng-hide="mustShow">
 
     <br />
 
