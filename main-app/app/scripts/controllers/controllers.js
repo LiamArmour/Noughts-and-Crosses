@@ -3,12 +3,10 @@
     angular.module('Tombola.Games.NoughtsAndCrosses')
 
         .controller('GameboardController', ["$scope", "$interval", "gameProxy", function($scope, $interval, gameProxy) {
-            var currentPlayer;
-            currentPlayer = '1';
-
             $scope.gameTitle = "Noughts and Crosses";
             $scope.playerOne = "human";
             $scope.playerTwo = "human";
+            $scope.currentPlayer = '1';
             $scope.gameBoard='000000000';
             $scope.mustShow = '';
             $scope.mustShow=false;
@@ -25,49 +23,53 @@
                 if (playerChoice === "human") {
                     return "pre-trained";
                 }
-                else
-                    if (playerChoice === "pre-trained") {
-                        return "random";
-                    }
-                    else {
-                        return "human";
-                    }
+                else if (playerChoice === "pre-trained") {
+                    return "random";
+                }
+                else {
+                    return "human";
+                }
             };
-
 
             $scope.makeNewGame = function(){
                 gameProxy.newGame($scope.playerOne, $scope.playerTwo).then(
                     function(data){
-                        console.log('Game started');
                         $scope.mustShow=true;
+
+                        if ($scope.playerOne === 'human' && $scope.playerTwo === 'human') {
+                            $scope.currentPlayer = 1;
+                        }else if ($scope.playerOne !== 'human' && $scope.playerTwo === 'human'){
+                            $scope.currentPlayer = 2;
+                        }else {
+                            $scope.currentPlayer = 1;
+                        }
+                        $scope.gameBoard = data.gameboard;
                 },
                     function(data){
                         console.log('Game didnt start');
                 });
-
-
             };
+
+
             $scope.takeTurn = function (index){
-
-                currentPlayer = 1;
-
                 if ($scope.gameBoard[index] !== '0') {
                     return;
                 }
-                gameProxy.makeMove(currentPlayer, index)
+                gameProxy.makeMove($scope.currentPlayer, index)
                     .then(function(data){
+                        console.log('1 ' + $scope.currentPlayer);
+
+                        console.log('2 ' + $scope.currentPlayer);
                         $scope.gameBoard = data.gameboard;
-                        $scope.gameBoard= setCharAt($scope.gameBoard , index, currentPlayer);
+                        $scope.gameBoard= setCharAt($scope.gameBoard , index, $scope.currentPlayer);
 
-                        currentPlayer = 1;
-
+                        if ($scope.playerOne === 'human' && $scope.playerTwo === 'human'){
+                            $scope.currentPlayer = $scope.currentPlayer === 1 ? 2: 1;
+                        }
                     },
                     function(data){
-                    //IF FAILS
+                    console.log('make move failed: ' + data );
                 });
-
-                currentPlayer = currentPlayer === '1' ? '2': '1';
-
             };
             function setCharAt(gameboardString,index,chr) {
                 if(index > gameboardString.length-1) return gameboardString;
