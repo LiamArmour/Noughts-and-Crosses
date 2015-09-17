@@ -2,22 +2,22 @@
     'use strict';
     module.exports={
         images: {
-            src: ['.build/main-app/app/image/']
+            src: ['.build/images/']
         },
         sounds: {
-            src: ['.build/main-app/app/sound/']
+            src: ['.build/sounds']
         },
         html:{
-            src:'.build/main-app/app/index.html'
+            src:'.build/index.html'
         },
         bower: {
-            src: ['.build/main-app/app/third-party/bower_components/']
+            src: ['.build/third-party/bower_components/']
         },
         css:{
-            src:'.build/main-app/app/css/main.css'
+            src:'.build/css/main.css'
         },
         javascript:{
-            src:'.build/main-app/app/scripts/app.js'
+            src:'.build/scripts/app.js'
         },
         all: {
             src: ['./.build/']

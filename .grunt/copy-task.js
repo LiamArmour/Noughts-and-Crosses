@@ -2,22 +2,22 @@
     'use strict';
     module.exports={
         mainappimages: {
-            cwd: '',
-            src: ['main-app/app/images/**/*.*'],
+            cwd: 'main-app/app',
+            src: ['images/**/*.*'],
             dest: '.build/',
             expand: true
         },
 
         mainappsounds: {
-            cwd: '',
-            src: ['main-app/app/sounds/**/*.*'],
+            cwd: 'main-app/app',
+            src: ['sounds/**/*.*'],
             dest: '.build/',
             expand: true
         },
 
         html: {
-            cwd: '',
-            src: ['main-app/app/*.html'],
+            cwd: 'main-app/app',
+            src: ['index.html'],
             dest: '.build/',
             expand: true
         },
@@ -25,7 +25,7 @@
         bower: {
             cwd: 'bower_components',
             src: ['**/*.*'],
-            dest: '.build/main-app/app/thirdparty/',
+            dest: '.build/thirdparty/',
             expand: true
         }
     };
