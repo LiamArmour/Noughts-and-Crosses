@@ -25,7 +25,7 @@
                     spawn:false
                 },
                 html:{
-                    files:'main-app/app/index.html',
+                    files:'main-app/app/html/**/*.html',
                     tasks:'editHtml',
                     spawn:false
                 }
