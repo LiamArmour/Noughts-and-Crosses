@@ -22,75 +22,10 @@
 <h1>{{gameTitle}}</h1>
 
 
-<div ng-hide="mustShow" class="playerSelection">
-
-    <h2>Player Selection</h2>
-
-    <div ng-click="selectPlayer(1)" class="{{playerOne}}">
-
-    </div>
-
-    <div ng-click="selectPlayer(2)" class="{{playerTwo}}">
-
-    </div>
-
-    <div>
-        <select ng-model="playerOne">
-            <option value="human" selected="selected">Human</option>
-            <option value="pre-trained">Computer</option>
-            <option value="random">Random</option>
-        </select>
-
-        <select  ng-model="playerTwo">
-            <option value="human" selected="selected">Human</option>
-            <option value="pre-trained">Computer</option>
-            <option value="random">Random</option>
-        </select>
-    </div>
-
-    <div>
-        <input type="button" value="Play!" ng-click="makeNewGame()" ng-hide="mustShow">
-    </div>
-
-</div>
+<player-selection></player-selection>
 
 
-<div ng-show="mustShow">
-
-    <h2>Current players turn {{currentPlayer}}</h2>
-
-<div class="table" id="board" >
-    <div class="row">
-        <div class="cell player{{gameBoard[0]}}" ng-click="takeTurn(0)" >
-        </div>
-        <div class="cell player{{gameBoard[1]}}" ng-click="takeTurn(1)">
-        </div>
-        <div class="cell player{{gameBoard[2]}}" ng-click="takeTurn(2)">
-        </div>
-    </div>
-    <div class="row">
-        <div class="cell player{{gameBoard[3]}}" ng-click="takeTurn(3)">
-        </div>
-        <div class="cell player{{gameBoard[4]}}" ng-click="takeTurn(4)">
-        </div>
-        <div class="cell player{{gameBoard[5]}}" ng-click="takeTurn(5)">
-        </div>
-    </div>
-    <div class="row">
-        <div class="cell player{{gameBoard[6]}}" ng-click="takeTurn(6)">
-        </div>
-        <div class="cell player{{gameBoard[7]}}" ng-click="takeTurn(7)">
-        </div>
-        <div class="cell player{{gameBoard[8]}}" ng-click="takeTurn(8)">
-        </div>
-    </div>
-</div>
-
-<div class="players">
-    Player One: {{playerOne}} -- Player Two: {{playerTwo}}
-</div>
-
-</div>
+<game-board></game-board>
 
 
 

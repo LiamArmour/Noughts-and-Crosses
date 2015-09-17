@@ -1,7 +1,8 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses', []);
-    angular.module('Tombola.Games.NoughtsAndCrosses')
+
+/*    angular.module('Tombola.Games.NoughtsAndCrosses')
         .config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){
             $UrlRouterProvider.otherwise("/playerSelection");
             $StateProvider
@@ -13,5 +14,5 @@
                     url: "/gameBoard",
                     templateUrl: "partials/gameboard.html"
                 })
-        }])
+        }])*/
 })();

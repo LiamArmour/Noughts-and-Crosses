@@ -5,10 +5,10 @@
             src: ['.build/images/']
         },
         sounds: {
-            src: ['.build/sounds']
+            src: ['.build/sounds/']
         },
         html:{
-            src:'.build/index.html'
+            src:['.build/index.html','.build/partials/']
         },
         bower: {
             src: ['.build/third-party/bower_components/']

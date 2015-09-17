@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div ng-show="mustShow">
 
-</body>
-</html>
+    <h2>Current players turn {{currentPlayer}}</h2>
+
+    <div class="table" id="board" >
+        <div class="row">
+            <div class="cell player{{gameBoard[0]}}" ng-click="takeTurn(0)" >
+            </div>
+            <div class="cell player{{gameBoard[1]}}" ng-click="takeTurn(1)">
+            </div>
+            <div class="cell player{{gameBoard[2]}}" ng-click="takeTurn(2)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell player{{gameBoard[3]}}" ng-click="takeTurn(3)">
+            </div>
+            <div class="cell player{{gameBoard[4]}}" ng-click="takeTurn(4)">
+            </div>
+            <div class="cell player{{gameBoard[5]}}" ng-click="takeTurn(5)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell player{{gameBoard[6]}}" ng-click="takeTurn(6)">
+            </div>
+            <div class="cell player{{gameBoard[7]}}" ng-click="takeTurn(7)">
+            </div>
+            <div class="cell player{{gameBoard[8]}}" ng-click="takeTurn(8)">
+            </div>
+        </div>
+    </div>
+
+    <div class="players">
+        Player One: {{playerOne}} -- Player Two: {{playerTwo}}
+    </div>
+
+</div>
