@@ -2,12 +2,14 @@
 
     <h2>Game Lobby</h2>
 
+    <p>Click on the images to change the opponent</p>
+
     <div ng-click="selectPlayer(1)" class="{{playerOne.type}}" ng-model="playerOne.type"></div>
 
     <div ng-click="selectPlayer(2)" class="{{playerTwo.type}}" ng-model="playerTwo.type"></div>
 
     <div>
-        <input type="button" value="Play!" ng-click="makeNewGame()" ui-sref="gameBaord">
+        <input type="button" value="Start Game!" ng-click="makeNewGame()" ui-sref="gameBaord">
     </div>
 
 </div>
