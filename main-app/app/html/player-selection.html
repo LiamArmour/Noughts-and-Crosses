@@ -2,27 +2,9 @@
 
     <h2>Game Lobby</h2>
 
-    <div ng-click="selectPlayer(1)" class="{{playerOne.type}}">
+    <div ng-click="selectPlayer(1)" class="{{playerOne.type}}" ng-model="playerOne.type"></div>
 
-    </div>
-
-    <div ng-click="selectPlayer(2)" class="{{playerTwo.type}}">
-
-    </div>
-
-    <div>
-        <select ng-model="playerOne.type">
-            <option value="human" selected="selected">Human</option>
-            <option value="pre-trained">Computer</option>
-            <option value="random">Random</option>
-        </select>
-
-        <select  ng-model="playerTwo.type">
-            <option value="human" selected="selected">Human</option>
-            <option value="pre-trained">Computer</option>
-            <option value="random">Random</option>
-        </select>
-    </div>
+    <div ng-click="selectPlayer(2)" class="{{playerTwo.type}}" ng-model="playerTwo.type"></div>
 
     <div>
         <input type="button" value="Play!" ng-click="makeNewGame()" ui-sref="gameBaord">
