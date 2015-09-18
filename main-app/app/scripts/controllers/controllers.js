@@ -75,5 +75,12 @@
                 if(index > gameboardString.length-1) return gameboardString;
                 return gameboardString.substr(0,index) + chr + gameboardString.substr(index+1);
             }
+
+            //me.resetGame = function(){
+            //    me.playing = false;
+            //    me.currentGameState = '';
+            //    me.playerWinner = '';
+            //};
+
         }])
 })();

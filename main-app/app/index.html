@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{gameTitle}}</title>
     <script src="thirdparty/angular/angular.js"></script>
+    <script src="thirdparty/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="scripts/app.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -14,9 +15,12 @@
 
 <h1>{{gameTitle}}</h1>
 
-<player-selection></player-selection>
+<div ui-view>
 
-<game-board></game-board>
+<li><a ui-sref="playerSelection">Player Selection</a></li>
+<li><a>Game Board</a></li>
+
+</div>
 
 </body>
 </html>

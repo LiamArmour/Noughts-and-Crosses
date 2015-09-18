@@ -4,7 +4,7 @@
         .directive('playerSelection', function() {
             return{
                 restrict: 'E',
-                templateUrl: 'partials/playerselection.html'
+                templateUrl: 'partials/player-selection.html'
             }
             });
 })();
