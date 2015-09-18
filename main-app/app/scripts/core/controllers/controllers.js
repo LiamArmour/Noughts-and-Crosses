@@ -2,38 +2,12 @@
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses')
 
-        .controller('GameboardController', ["$scope", "$interval", "gameProxy", function($scope, $interval, gameProxy) {
-            $scope.gameTitle = "Noughts and Crosses";
-            $scope.playerOne = {
-                type: "human",
-            };
-            $scope.playerTwo = {
-                type: "human",
-            };
+        .controller('GameboardController', ['$scope', '$interval', 'gameProxy', 'PlayerSelection', function($scope, $interval, gameProxy) {
+            $scope.gameTitle = 'Noughts and Crosses';
             $scope.currentPlayer = '1';
             $scope.gameBoard='000000000';
-            $scope.mustShow = '';
-            $scope.mustShow=false;
 
-            $scope.selectPlayer = function(playerChoice){
-                if (playerChoice === 1) {
-                    $scope.playerOne.type = selectCharacter($scope.playerOne.type);
-                }
-                else {
-                    $scope.playerTwo.type = selectCharacter($scope.playerTwo.type);
-                }
-            };
-            var selectCharacter = function (playerChoice) {
-                if (playerChoice === "human") {
-                    return "pre-trained";
-                }
-                else if (playerChoice === "pre-trained") {
-                    return "random";
-                }
-                else {
-                    return "human";
-                }
-            };
+
 
             $scope.makeNewGame = function(){
                 gameProxy.newGame($scope.playerOne.type, $scope.playerTwo.type).then(
