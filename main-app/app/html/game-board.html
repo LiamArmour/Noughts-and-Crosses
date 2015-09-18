@@ -1,36 +1,35 @@
-    <h3>Player {{currentPlayer}}, please take your turn.</h3>
+<h3>Player {{currentPlayer}}, please take your turn.</h3>
 
-    <div class="table" id="board" >
-        <div class="row">
-            <div class="cell player{{gameBoard[0]}}" ng-click="takeTurn(0)" >
-            </div>
-            <div class="cell player{{gameBoard[1]}}" ng-click="takeTurn(1)">
-            </div>
-            <div class="cell player{{gameBoard[2]}}" ng-click="takeTurn(2)">
-            </div>
+<div class="table" id="board" >
+    <div class="row">
+        <div class="cell player{{gameBoard[0]}}" ng-click="takeTurn(0)" >
         </div>
-        <div class="row">
-            <div class="cell player{{gameBoard[3]}}" ng-click="takeTurn(3)">
-            </div>
-            <div class="cell player{{gameBoard[4]}}" ng-click="takeTurn(4)">
-            </div>
-            <div class="cell player{{gameBoard[5]}}" ng-click="takeTurn(5)">
-            </div>
+        <div class="cell player{{gameBoard[1]}}" ng-click="takeTurn(1)">
         </div>
-        <div class="row">
-            <div class="cell player{{gameBoard[6]}}" ng-click="takeTurn(6)">
-            </div>
-            <div class="cell player{{gameBoard[7]}}" ng-click="takeTurn(7)">
-            </div>
-            <div class="cell player{{gameBoard[8]}}" ng-click="takeTurn(8)">
-            </div>
+        <div class="cell player{{gameBoard[2]}}" ng-click="takeTurn(2)">
         </div>
     </div>
-
-    <div class="players">
-        Player One: {{playerOne}} -- Player Two: {{playerTwo}}
+    <div class="row">
+        <div class="cell player{{gameBoard[3]}}" ng-click="takeTurn(3)">
+        </div>
+        <div class="cell player{{gameBoard[4]}}" ng-click="takeTurn(4)">
+        </div>
+        <div class="cell player{{gameBoard[5]}}" ng-click="takeTurn(5)">
+        </div>
     </div>
-    <div>
-        <button ng-click="model.resetGame()" ui-sref="playerSelection">Reset</button>
+    <div class="row">
+        <div class="cell player{{gameBoard[6]}}" ng-click="takeTurn(6)">
+        </div>
+        <div class="cell player{{gameBoard[7]}}" ng-click="takeTurn(7)">
+        </div>
+        <div class="cell player{{gameBoard[8]}}" ng-click="takeTurn(8)">
+        </div>
     </div>
+</div>
 
+<div class="players">
+    Player One: {{playerOne.type}} -- Player Two: {{playerTwo.type}}
+</div>
+<div>
+    <button ng-click="model.resetGame()" ui-sref="playerSelection">Reset</button>
+</div>

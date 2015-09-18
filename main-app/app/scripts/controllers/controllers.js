@@ -4,8 +4,12 @@
 
         .controller('GameboardController', ["$scope", "$interval", "gameProxy", function($scope, $interval, gameProxy) {
             $scope.gameTitle = "Noughts and Crosses";
-            $scope.playerOne = "human";
-            $scope.playerTwo = "human";
+            $scope.playerOne = {
+                type: "human",
+            };
+            $scope.playerTwo = {
+                type: "human",
+            };
             $scope.currentPlayer = '1';
             $scope.gameBoard='000000000';
             $scope.mustShow = '';
@@ -13,10 +17,10 @@
 
             $scope.selectPlayer = function(playerChoice){
                 if (playerChoice === 1) {
-                    $scope.playerOne = selectCharacter($scope.playerOne);
+                    $scope.playerOne.type = selectCharacter($scope.playerOne.type);
                 }
                 else {
-                    $scope.playerTwo = selectCharacter($scope.playerTwo);
+                    $scope.playerTwo.type = selectCharacter($scope.playerTwo.type);
                 }
             };
             var selectCharacter = function (playerChoice) {
@@ -32,13 +36,13 @@
             };
 
             $scope.makeNewGame = function(){
-                gameProxy.newGame($scope.playerOne, $scope.playerTwo).then(
+                gameProxy.newGame($scope.playerOne.type, $scope.playerTwo.type).then(
                     function(data){
                         $scope.mustShow=true;
 
-                        if ($scope.playerOne === 'human' && $scope.playerTwo === 'human') {
+                        if ($scope.playerOne.type === 'human' && $scope.playerTwo.type === 'human') {
                             $scope.currentPlayer = 1;
-                        }else if ($scope.playerOne !== 'human' && $scope.playerTwo === 'human'){
+                        }else if ($scope.playerOne.type !== 'human' && $scope.playerTwo.type === 'human'){
                             $scope.currentPlayer = 2;
                         }else {
                             $scope.currentPlayer = 1;
@@ -63,7 +67,7 @@
                         $scope.gameBoard = data.gameboard;
                         $scope.gameBoard= setCharAt($scope.gameBoard , index, $scope.currentPlayer);
 
-                        if ($scope.playerOne === 'human' && $scope.playerTwo === 'human'){
+                        if ($scope.playerOne.type === 'human' && $scope.playerTwo.type === 'human'){
                             $scope.currentPlayer = $scope.currentPlayer === 1 ? 2: 1;
                         }
                     },
@@ -75,12 +79,6 @@
                 if(index > gameboardString.length-1) return gameboardString;
                 return gameboardString.substr(0,index) + chr + gameboardString.substr(index+1);
             }
-
-            //me.resetGame = function(){
-            //    me.playing = false;
-            //    me.currentGameState = '';
-            //    me.playerWinner = '';
-            //};
 
         }])
 })();
