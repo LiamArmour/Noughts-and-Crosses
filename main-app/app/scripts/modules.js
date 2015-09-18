@@ -12,7 +12,16 @@
                 .state('gameBaord', {
                     url: "/gameBoard",
                     templateUrl: "partials/game-board.html",
+                })
+                .state('gameRules', {
+                    url: "/rules",
+                    templateUrl: "partials/game-rules.html",
+                })
+                .state('gameAbout', {
+                    url: "/gameAbout",
+                    templateUrl: "partials/game-about.html",
                 });
+
         }]);
 
 })();
