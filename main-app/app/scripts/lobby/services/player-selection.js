@@ -10,7 +10,7 @@
                 };
 
             me.player1Type = playerTypes[0];
-            me.player2Type = playerTypes[1];
+            me.player2Type = playerTypes[0];
 
             me.selectPlayer = function(playerNumber){
                 var playerTypeName = 'player' + playerNumber + 'Type';
