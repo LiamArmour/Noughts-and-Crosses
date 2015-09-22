@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('Tombola.Games.NoughtsAndCrosses')
-        .service('gameProxy', ['$http', '$q', function($http, $q){
+        .service('GameProxy', ['$http', '$q', function($http, $q){
             var me = this;
             me.newGame = function(player1type, player2type) {
                 var defered = $q.defer();

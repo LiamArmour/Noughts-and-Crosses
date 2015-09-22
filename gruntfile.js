@@ -47,7 +47,7 @@
         grunt.loadNpmTasks('grunt-contrib-watch');
         grunt.registerTask('editHtml',['clean:html','copy:html','copy:partials']);
         grunt.registerTask('lessFiles',['lesslint','clean:css','less']);
-        grunt.registerTask('jsFiles',['jshint:gruntlint','clean:javascript','concat:concat']);
+        grunt.registerTask('jsFiles',['jshint','clean:javascript','concat:concat']);
         grunt.registerTask('default',['copy', 'editHtml', 'lessFiles', 'jsFiles', 'watch']);
     };
 })();
