@@ -1,6 +1,7 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Lobby', []);
+    angular.module('Tombola.Games.NoughtsAndCrosses.Proxy', []);
 
     angular.module('Tombola.Games.NoughtsAndCrosses', ['ui.router', 'Tombola.Games.NoughtsAndCrosses.Lobby'])
     .config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){
