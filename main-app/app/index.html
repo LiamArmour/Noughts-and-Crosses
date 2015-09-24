@@ -1,61 +1,23 @@
 <!DOCTYPE html>
-<html ng-app="Tombola.Games.NoughtsAndCrosses">
+<html ng-app="Tombola.Games.NoughtsAndCrosses" ng-controller="GameboardController">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>{{gameTitle}}</title>
     <script src="thirdparty/angular/angular.js"></script>
+    <script src="thirdparty/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="scripts/app.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
-<body ng-controller="GameboardTextController">
+<body>
+
+<navigation-bar></navigation-bar>
 
 <h1>{{gameTitle}}</h1>
 
-<h2>TEMP: Gamebaord: {{gameBoard}}</h2>
+<div ui-view>
 
-
-<div class="table">
-    <div class="row">
-        <div class="cell">
-            <p>Row 1 Column 1</p>
-        </div>
-        <div class="cell">
-            <p>Row 1 Column 2</p>
-        </div>
-        <div class="cell">
-            <p>Row 1 Column 3</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="cell">
-            <p>Row 2 Column 1</p>
-        </div>
-        <div class="cell">
-            <p>Row 2 Column 2</p>
-        </div>
-        <div class="cell">
-            <p>Row 2 Column 3</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="cell">
-            <p>Row 3 Column 1</p>
-        </div>
-        <div class="cell">
-            <p>Row 3 Column 2</p>
-        </div>
-        <div class="cell">
-            <p>Row 3 Column 3</p>
-        </div>
-    </div>
 </div>
-
-<div class="players">
-    Player One: {{playerOne}} -- Player Two: {{playerTwo}}
-</div>
-
-
 
 </body>
 </html>

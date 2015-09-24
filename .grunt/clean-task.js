@@ -1,14 +1,26 @@
 (function () {
     'use strict';
     module.exports={
-        javascript:{
-            src:'.build/main-app/app/scripts/app.js'
+        images: {
+            src: ['.build/images/']
         },
-        css:{
-            src:'.build/main-app/app/css/main.css'
+        sounds: {
+            src: ['.build/sounds/']
         },
         html:{
-            src:'.build/main-app/app/index.html'
+            src:['.build/index.html','.build/partials/']
+        },
+        bower: {
+            src: ['.build/third-party/bower_components/']
+        },
+        css:{
+            src:'.build/css/main.css'
+        },
+        javascript:{
+            src:'.build/scripts/app.js'
+        },
+        all: {
+            src: ['./.build/']
         }
     };
 

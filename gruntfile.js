@@ -28,6 +28,11 @@
                     files:'main-app/app/index.html',
                     tasks:'editHtml',
                     spawn:false
+                },
+                partials:{
+                    files:'main-app/app/html/**/*.html',
+                    tasks:'editHtml',
+                    spawn:false
                 }
 
             }
@@ -40,7 +45,7 @@
         grunt.loadNpmTasks('grunt-contrib-concat');
         grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-watch');
-        grunt.registerTask('editHtml',['clean:html','copy:html']);
+        grunt.registerTask('editHtml',['clean:html','copy:html','copy:partials']);
         grunt.registerTask('lessFiles',['lesslint','clean:css','less']);
         grunt.registerTask('jsFiles',['jshint:gruntlint','clean:javascript','concat:concat']);
         grunt.registerTask('default',['copy', 'editHtml', 'lessFiles', 'jsFiles', 'watch']);
