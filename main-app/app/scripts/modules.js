@@ -23,8 +23,15 @@
             .state('gameAbout', {
                 url: "/gameAbout",
                 templateUrl: "partials/game-about.html",
+            })
+            .state('gameWin', {
+                url: "/win",
+                templateUrl: "partials/game-win.html",
+            })
+            .state('gameDraw', {
+                url: "/draw",
+                templateUrl: "partials/game-draw.html",
             });
-
     }]);
 
 })();

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('Tombola.Games.NoughtsAndCrosses')
-        .service('GameProxy', ['$http', '$q', 'proxyConstants', function($http, $q, proxyConstants){
+        .service('GameProxy', ['$http', '$q', 'proxyConstants','$state', function($http, $q, proxyConstants, $state){
             var me = this;
             me.newGame = function(player1type, player2type) {
                 var defered = $q.defer();
@@ -23,6 +23,11 @@
                 $http.post("proxyConstants.takeTurnURL", {"playerNumber": playerNumber, "chosenSquare": chosenSquare}, {"withCredentials": "true"}).
                     then(function(response) {
                         defered.resolve(response.data);
+                        if (response.outcome === "Win") {
+                            $state.go('gameWin');
+                        } else {
+                            $state.go('gameDraw');
+                        }
                     }, function(response){
                         defered.reject(response.data);
                     });
