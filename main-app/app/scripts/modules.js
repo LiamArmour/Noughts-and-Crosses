@@ -1,13 +1,13 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Lobby', []);
-    angular.module('Tombola.Games.NoughtsAndCrosses.Proxy', []);
-    angular.module('Tombola.Games.NoughtsAndCrosses.GameBoard', []);
+    angular.module('Tombola.Games.NoughtsAndCrosses.Core', []);
+    angular.module('Tombola.Games.NoughtsAndCrosses.Game', []);
 
     angular.module('Tombola.Games.NoughtsAndCrosses', ['ui.router',
         'Tombola.Games.NoughtsAndCrosses.Lobby',
-        'Tombola.Games.NoughtsAndCrosses.Proxy',
-        'Tombola.Games.NoughtsAndCrosses.GameBoard'])
+        'Tombola.Games.NoughtsAndCrosses.Core',
+        'Tombola.Games.NoughtsAndCrosses.Game'])
 
     .config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise("/playerSelection");

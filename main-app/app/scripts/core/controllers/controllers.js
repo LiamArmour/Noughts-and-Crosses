@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    angular.module('Tombola.Games.NoughtsAndCrosses')
+    angular.module('Tombola.Games.NoughtsAndCrosses.Core')
 
-        .controller('CoreController', ['$scope','$state','NewGame',  function($scope, $state, newGame) {
+        .controller('MainController', ['$scope','$state','GameModel',  function($scope, $state, gameModel) {
             $scope.gameTitle = 'Noughts and Crosses';
             $scope.makeNewGame= function (){
-                newGame.makeNewGame();
+                gameModel.makeNewGame();
                 $state.go('gameBaord');
             };
 

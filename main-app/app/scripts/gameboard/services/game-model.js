@@ -1,43 +1,49 @@
 (function () {
     'use strict';
-    angular.module('Tombola.Games.NoughtsAndCrosses')
+    angular.module('Tombola.Games.NoughtsAndCrosses.Game')
         .service('GameModel', ['PlayerSelection','GameProxy','$state', function(playerSelection, gameProxy, $state) {
-            var me = this;
+            var me = this,
+                outcome = 'Continue',
+                checkGameEnded = function(){
+                    if (outcome === "Win") {
+                        $state.go('gameWin');
+                    } else if (outcome === "Draw") {
+                        $state.go('gameDraw');
+                    }
+                },
+                updateGameBoard = function(data){
+                    me.gameBoard = data.gameboard;
+                    outcome = data.outcome;
+                    checkGameEnded();
+                };
             me.playerSelection = playerSelection;
             me.currentPlayer = '1';
             me.gameBoard='000000000';
+            me.makeNewGame = function(){
+                gameProxy.newGame(playerSelection.player1Type, playerSelection.player2Type).then(
+                    function(data){
+                        me.currentPlayer = playerSelection.getStartingPlayer();
+                        updateGameBoard(data);
+                    },
+                    function(data){
+                        console.log(data);
+                    });
+            };
+            me.takeTurn = function (index){
+                if (me.gameBoard[index] !== '0') {
+                    return;
+                }
+                gameProxy.makeMove(me.currentPlayer, index)
+                    .then(function(data){
+                        updateGameBoard(data);
 
-            //me.takeTurn = function (index){
-            //    if (me.gameBoard[index] !== '0') {
-            //        return;
-            //    }
-            //    gameProxy.makeMove(me.currentPlayer, index)
-            //        .then(function(data){
-            //            me.gameBoard = data.gameboard;
-            //            me.gameBoard= setCharAt(me.gameBoard , index, me.currentPlayer);
-            //
-            //            if (playerSelection.player1Type === 'human' && playerSelection.player2Type === 'human'){
-            //                me.currentPlayer = me.currentPlayer === 1 ? 2: 1;
-            //            }
-            //
-            //            if (data.outcome === "Win") {
-            //                $state.go('gameWin');
-            //            } else if (data.outcome === "Draw") {
-            //                $state.go('gameDraw');
-            //            }
-            //        },
-            //        function(data){
-            //            console.log('make move failed: ' + data );
-            //        });
-            //};
-
-
-            function setCharAt(gameboardString,index,chr) {
-                if(index > gameboardString.length-1) return gameboardString;
-                return gameboardString.substr(0,index) + chr + gameboardString.substr(index+1);
-            }
-
+                        if (playerSelection.isHumanVsHuman()){
+                            me.currentPlayer = me.currentPlayer === 1 ? 2: 1;
+                        }
+                    },
+                    function(data){
+                        console.log('make move failed: ' + data );
+                    });
+            };
         }]);
 })();
-
-
