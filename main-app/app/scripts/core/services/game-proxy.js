@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('Tombola.Games.NoughtsAndCrosses')
-        .service('GameProxy', ['$http', '$q', 'proxyConstants','$state', function($http, $q, proxyConstants, $state){
+        .service('GameProxy', ['$http', '$q', 'proxyConstants', function($http, $q, proxyConstants){
             var me = this;
             me.newGame = function(player1type, player2type) {
                 var defered = $q.defer();
@@ -21,20 +21,9 @@
 
             me.makeMove = function(playerNumber, chosenSquare) {
                 var defered = $q.defer();
-                $http.post("http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove", {"playerNumber": playerNumber, "chosenSquare": chosenSquare}, {"withCredentials": "true"})
-                    .then(function(response) {
+                $http.post("http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove", {"playerNumber": playerNumber, "chosenSquare": chosenSquare}, {"withCredentials": "true"}).
+                    then(function(response) {
                         defered.resolve(response.data);
-
-
-                        if (response.outcome === "Win") {
-                            $state.go('gameWin');
-                        } else if (response.outcome === "Draw") {
-                            $state.go('gameDraw');
-                        }
-
-
-
-
                     }, function(response){
                         defered.reject(response.data);
                     });
