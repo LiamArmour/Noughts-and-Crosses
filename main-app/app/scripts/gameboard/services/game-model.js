@@ -36,7 +36,6 @@
                 gameProxy.makeMove(me.currentPlayer, index)
                     .then(function(data){
                         updateGameBoard(data);
-
                         if (playerSelection.isHumanVsHuman()){
                             me.currentPlayer = me.currentPlayer === 1 ? 2: 1;
                         }
