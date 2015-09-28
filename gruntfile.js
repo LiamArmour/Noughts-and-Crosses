@@ -45,9 +45,18 @@
         grunt.loadNpmTasks('grunt-contrib-concat');
         grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-watch');
+        grunt.loadNpmTasks('grunt-express-server');
         grunt.registerTask('editHtml',['clean:html','copy:html','copy:partials']);
         grunt.registerTask('lessFiles',['lesslint','clean:css','less']);
-        grunt.registerTask('jsFiles',['jshint:gruntlint','clean:javascript','concat:concat']);
-        grunt.registerTask('default',['copy', 'editHtml', 'lessFiles', 'jsFiles', 'watch']);
+        grunt.registerTask('jsFiles',['jshint','clean:javascript','concat:concat']);
+        grunt.registerTask('default',['copy', 'editHtml', 'lessFiles', 'jsFiles', 'server', 'watch']);
+
+        var port = 35001;
+        grunt.registerTask('server', 'Start a custom web server', function() {
+            var server = require('./.grunt/express-task.js');
+            server.listen(port);
+            grunt.log.writeln('Listening on port ' + port);
+        });
+
     };
 })();

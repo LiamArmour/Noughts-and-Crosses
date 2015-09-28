@@ -5,6 +5,6 @@
             return{
                 restrict: 'E',
                 templateUrl: 'partials/navigation.html'
-            }
+            };
         });
 })();
