@@ -14,7 +14,7 @@
             src: ['.build/third-party/bower_components/']
         },
         css:{
-            src:'.build/css/main.css'
+            src:'.build/css/'
         },
         javascript:{
             src:'.build/scripts/app.js'

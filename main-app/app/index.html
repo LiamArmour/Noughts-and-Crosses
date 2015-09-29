@@ -6,10 +6,12 @@
     <script src="thirdparty/angular/angular.js"></script>
     <script src="thirdparty/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="scripts/app.js"></script>
+    <script>document.write('<base href="' + document.location + '" />');</script>
     <link href="images/favicon.ico" rel="icon" type="image/png">
     <link rel="shortcut icon" href="images/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{stylePath}}">
+
     <link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
 
@@ -18,6 +20,8 @@
 <navigation-bar></navigation-bar>
 
 <h1>{{gameTitle}}</h1>
+
+<button ng-click="changePath()">Change</button>
 
 <div ui-view>
 
