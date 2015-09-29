@@ -2,7 +2,7 @@
     'use strict';
     module.exports={
         lintCheck: {
-            src:['**/*.less', '**/*.css'],
+            src:'**/*.less',
             cwd:'main-app/app/less/',
             dest:'.build/css/',
             expand:true,
