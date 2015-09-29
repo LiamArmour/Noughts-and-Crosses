@@ -1,31 +1,10 @@
-<h1>You won</h1>
+<div ng-controller="GameBoardController" class="gameRules">
 
+    <h1>We have a winner!!</h1>
 
-
-<!DOCTYPE html>
-<html >
-<head>
-
-    <style type="text/css">
-        .imgBox {
-            width: 191px;
-            height: 191px;
-            background: url(http://www.corelangs.com/css/box/img/duck.png) no-repeat;
-        }
-        .imgBox:hover {
-            width: 191px;
-            height: 191px;
-            background: url(http://www.corelangs.com/css/box/img/peng.png) no-repeat;
-        }
-    </style>
-
-</head>
-
-<body>
-<img src="images/tumblr_mpn7u7ek351rmw6moo1_500.gif">
-<div class="imgBox">
+    <h3>Player {{model.gameWinner}} won that game!!</h3>
+    <br><br>
 
 </div>
 
-</body>
-</html>
+<img src="images/minion.gif" class="win-image animated bounceIn infinite">

@@ -14,11 +14,13 @@
                 updateGameBoard = function(data){
                     me.gameBoard = data.gameboard;
                     outcome = data.outcome;
+                    me.gameWinner = data.winner;
                     checkGameEnded();
                 };
             me.playerSelection = playerSelection;
             me.currentPlayer = '1';
             me.gameBoard='000000000';
+            me.gameWinner = '';
             me.makeNewGame = function(){
                 gameProxy.newGame(playerSelection.player1Type, playerSelection.player2Type).then(
                     function(data){
