@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
 
     <link rel="stylesheet" type="text/css" href="{{stylePath}}">
-    
+
 </head>
 
 <body>
@@ -19,8 +19,9 @@
 <navigation-bar></navigation-bar>
 
 <h1>{{gameTitle}}</h1>
+<h3><button ng-click="changePath()">Change to {{nextStyleName}} theme</button></h3>
 
-<button ng-click="changePath()">Change</button>
+
 
 <div ui-view>
 
