@@ -22,8 +22,8 @@
             me.gameBoard='000000000';
             me.gameWinner = '';
             me.makeNewGame = function(){
-                gameProxy.newGame(playerSelection.player1Type, playerSelection.player2Type).then(
-                    function(data){
+                gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
+                    .then(function(data){
                         me.currentPlayer = playerSelection.getStartingPlayer();
                         updateGameBoard(data);
                     },
@@ -35,7 +35,7 @@
                 if (me.gameBoard[index] !== '0') {
                     return;
                 }
-                gameProxy.makeMove(me.currentPlayer, index)
+                gameProxy.apiCall("makemove", {"playerNumber": me.currentPlayer, "chosenSquare": index})
                     .then(function(data){
                         updateGameBoard(data);
                         if (playerSelection.isHumanVsHuman()){
