@@ -11,7 +11,7 @@
                         } else if (outcome === "Draw") {
                             $state.go('gameDraw');
                         }
-                    },3000, 1);
+                    },5000, 1);
                 },
                 updateGameBoard = function(data){
                     me.gameBoard = data.gameboard;

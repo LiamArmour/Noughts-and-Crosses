@@ -5,7 +5,7 @@
             return {
                 restrict: 'E',
                 template: function(element, attributes){
-                    var html = '<div class="player{{model.gameBoard['+ attributes.squareNumber+']}}" ng-click="model.takeTurn('+attributes.squareNumber+')"></div>';
+                    var html = '<div class="cell player{{model.gameBoard['+ attributes.squareNumber+']}}" ng-click="model.takeTurn('+attributes.squareNumber+')"></div>';
                     return html;
                 }
             };
