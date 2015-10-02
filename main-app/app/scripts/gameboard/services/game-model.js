@@ -1,15 +1,17 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-        .service('GameModel', ['PlayerSelection','GameProxy','$state', function(playerSelection, gameProxy, $state) {
+        .service('GameModel', ['$state', '$interval', 'PlayerSelection','GameProxy', function($state, $interval, playerSelection, gameProxy) {
             var me = this,
                 outcome = 'Continue',
                 checkGameEnded = function(){
-                    if (outcome === "Win") {
-                        $state.go('gameWin');
-                    } else if (outcome === "Draw") {
-                        $state.go('gameDraw');
-                    }
+                    $interval(function(){
+                        if (outcome === "Win") {
+                            $state.go('gameWin');
+                        } else if (outcome === "Draw") {
+                            $state.go('gameDraw');
+                        }
+                    },3000, 1);
                 },
                 updateGameBoard = function(data){
                     me.gameBoard = data.gameboard;
