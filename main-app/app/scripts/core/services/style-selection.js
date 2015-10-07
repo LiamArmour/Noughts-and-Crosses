@@ -12,18 +12,17 @@
                 };
 
 
-            me.selectPlayer = function(playerNumber){
+            me.selectTheme = function(playerNumber){
                 var playerTypeName = 'player' + playerNumber + 'Type';
                 me[playerTypeName] = selectCharacter(me[playerTypeName]);
             };
+
             me.getStartingPlayer = function(){
                 if (me.player1Type !== nextTheme && me.player2Type === nextTheme){
                     return 2;
                 }
                 return 1;
             };
-            me.isHumanVsHuman = function(){
-                return me.player1Type === humanPlayer && me.player2Type === humanPlayer;
-            };
+
         }]);
 })();
