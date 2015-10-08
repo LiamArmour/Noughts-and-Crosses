@@ -4,19 +4,19 @@
 
 <div class="table" id="board" >
     <div class="row">
-        <div class="cell player{{model.gameBoard[0]}}" ng-click="model.takeTurn(0)" ></div>
-        <div class="cell player{{model.gameBoard[1]}}" ng-click="model.takeTurn(1)"></div>
-        <div class="cell player{{model.gameBoard[2]}}" ng-click="model.takeTurn(2)"></div>
+        <game-board-square square-number="0" class="cell"></game-board-square>
+        <game-board-square square-number="1" class="cell"></game-board-square>
+        <game-board-square square-number="2" class="cell"></game-board-square>
     </div>
     <div class="row">
-        <div class="cell player{{model.gameBoard[3]}}" ng-click="model.takeTurn(3)"></div>
-        <div class="cell player{{model.gameBoard[4]}}" ng-click="model.takeTurn(4)"></div>
-        <div class="cell player{{model.gameBoard[5]}}" ng-click="model.takeTurn(5)"></div>
+        <game-board-square square-number="3" class="cell"></game-board-square>
+        <game-board-square square-number="4" class="cell"></game-board-square>
+        <game-board-square square-number="5" class="cell"></game-board-square>
     </div>
     <div class="row">
-        <div class="cell player{{model.gameBoard[6]}}" ng-click="model.takeTurn(6)"></div>
-        <div class="cell player{{model.gameBoard[7]}}" ng-click="model.takeTurn(7)"></div>
-        <div class="cell player{{model.gameBoard[8]}}" ng-click="model.takeTurn(8)"></div>
+        <game-board-square square-number="6" class="cell"></game-board-square>
+        <game-board-square square-number="7" class="cell"></game-board-square>
+        <game-board-square square-number="8" class="cell"></game-board-square>
     </div>
 </div>
 

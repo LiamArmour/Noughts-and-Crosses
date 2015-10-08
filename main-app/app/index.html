@@ -9,12 +9,21 @@
     <link href="images/favicon.ico" rel="icon" type="image/png">
     <link rel="shortcut icon" href="images/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{stylePath}}">
+
 </head>
 
 <body>
 
-<navigation-bar></navigation-bar>
+<nav>
+    <ul>
+        <li><a ui-sref="playerSelection">Game Lobby</a></li>
+        <li><a ui-sref="gameRules">Rules</a></li>
+        <li><a ui-sref="gameAbout">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a ng-click="changePath()">Change to {{nextStyleName}} theme</a></li>
+    </ul>
+</nav>
 
 <h1>{{gameTitle}}</h1>
 

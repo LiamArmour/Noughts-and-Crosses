@@ -1,27 +1,31 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-        .service('GameModel', ['PlayerSelection','GameProxy','$state', function(playerSelection, gameProxy, $state) {
+        .service('GameModel', ['$state', '$interval', 'PlayerSelection','GameProxy', function($state, $interval, playerSelection, gameProxy) {
             var me = this,
                 outcome = 'Continue',
                 checkGameEnded = function(){
-                    if (outcome === "Win") {
-                        $state.go('gameWin');
-                    } else if (outcome === "Draw") {
-                        $state.go('gameDraw');
-                    }
+                    $interval(function(){
+                        if (outcome === "Win") {
+                            $state.go('gameWin');
+                        } else if (outcome === "Draw") {
+                            $state.go('gameDraw');
+                        }
+                    },5000, 1);
                 },
                 updateGameBoard = function(data){
                     me.gameBoard = data.gameboard;
                     outcome = data.outcome;
+                    me.gameWinner = data.winner;
                     checkGameEnded();
                 };
             me.playerSelection = playerSelection;
             me.currentPlayer = '1';
             me.gameBoard='000000000';
+            me.gameWinner = '';
             me.makeNewGame = function(){
-                gameProxy.newGame(playerSelection.player1Type, playerSelection.player2Type).then(
-                    function(data){
+                gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
+                    .then(function(data){
                         me.currentPlayer = playerSelection.getStartingPlayer();
                         updateGameBoard(data);
                     },
@@ -33,7 +37,7 @@
                 if (me.gameBoard[index] !== '0') {
                     return;
                 }
-                gameProxy.makeMove(me.currentPlayer, index)
+                gameProxy.apiCall("makemove", {"playerNumber": me.currentPlayer, "chosenSquare": index})
                     .then(function(data){
                         updateGameBoard(data);
                         if (playerSelection.isHumanVsHuman()){
