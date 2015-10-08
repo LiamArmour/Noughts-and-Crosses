@@ -1,23 +1,16 @@
 (function(){
     'use strict';
-    angular.module('Tombola.NoughtsandCrosses.CssSelection')
-        .service('StyleSelection',  ['StyleTypes', function (cssArray) {
-
-            var me = this;
-
-            var cssStyleChange = function () {
-                var nextIndex = cssArray.indexOf(me.stylePath) +1;
-                nextIndex = nextIndex === cssArray.length ? 0 : nextIndex;
-                return cssArray[nextIndex];
-            };
-
+    angular.module('Tombola.Games.NoughtsAndCrosses.Core')
+        .service('StyleSelection',  ['StyleTypes', function (styleTypes) {
+            var me = this,
+                cssStyleChange = function () {
+                    var nextIndex = styleTypes.indexOf(me.stylePath) +1;
+                    nextIndex = nextIndex === styleTypes.length ? 0 : nextIndex;
+                    return styleTypes[nextIndex];
+                };
             me.stylePath = styleTypes[0];
-
             me.toggleCss = function () {
                 me.stylePath = cssStyleChange();
             };
-
-            //changePath()
-
         }]);
 })();
