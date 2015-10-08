@@ -8,9 +8,16 @@
                     nextIndex = nextIndex === styleTypes.length ? 0 : nextIndex;
                     return styleTypes[nextIndex];
                 };
+
             me.currentStyle = styleTypes[0];
+
             me.toggleCss = function () {
-                me.currentStyle= cssStyleChange();
+                console.log('Current: ' + me.currentStyle);
+                me.currentStyle = cssStyleChange();
+                console.log('Next: ' + me.currentStyle);
+            };
+            me.getCurrentStyle = function(){
+                return currentStyle;
             };
         }]);
 })();
