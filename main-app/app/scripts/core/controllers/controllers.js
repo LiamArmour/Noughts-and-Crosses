@@ -4,7 +4,7 @@
 
         .controller('MainController', ['$scope','$state','GameModel','StyleSelection',  function($scope, $state, gameModel, styleSelection) {
             $scope.gameTitle = 'Noughts and Crosses';
-            $scope.displayStyle = styleSelection.currentStyle;
+            $scope.displayStyle = styleSelection;
             $scope.chnageStyle = styleSelection.toggleCss;
 
             $scope.makeNewGame= function (){

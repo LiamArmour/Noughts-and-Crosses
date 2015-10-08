@@ -9,7 +9,7 @@
                     return styleTypes[nextIndex];
                 };
 
-            me.currentStyle = styleTypes[1];
+            me.currentStyle = styleTypes[0];
 
             me.toggleCss = function () {
                 console.log('Current: ' + me.currentStyle);
@@ -19,7 +19,5 @@
             me.getCurrentStyle = function(){
                 return me.currentStyle;
             };
-            me.getCurrentStyle2 = me.currentStyle;
-
         }]);
 })();
