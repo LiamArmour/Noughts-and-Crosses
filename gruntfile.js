@@ -14,6 +14,7 @@
             jshint:javaTask,
             concat:javaTask,
             clean:cleanTask,
+            karma:karmaTask,
             watch:{
                 javascript: {
                     files: 'main-app/app/scripts/**/*.js',
