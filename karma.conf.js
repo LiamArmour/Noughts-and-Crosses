@@ -1,4 +1,9 @@
 (function () {
     'use strict';
-    /*TODO: Write some codez*/
+    module.exports = function(config) {
+        config.set({
+            basePath: '../..',
+            frameworks: ['jasmine']
+        });
+    };
 })();
