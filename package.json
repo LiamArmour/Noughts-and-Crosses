@@ -24,7 +24,10 @@
     "chai": "~3.3.0",
     "sinon": "~1.17.1",
     "karma-chai-sinon": "~0.1.5",
-    "karma-nyan-reporter": "~0.2.2"
+    "karma-nyan-reporter": "~0.2.2",
+    "karma-chrome-launcher": "~0.2.1",
+    "phantomjs": "~1.9.18",
+    "karma-phantomjs-launcher": "~0.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
