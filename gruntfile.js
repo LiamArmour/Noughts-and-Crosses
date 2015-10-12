@@ -36,13 +36,7 @@
                     spawn:false
                 }
 
-            },
-            karma: {
-                unit: {
-                    configFile: 'karma.conf.js'
-                }
             }
-
         });
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-lesslint');
