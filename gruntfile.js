@@ -48,7 +48,6 @@
         grunt.loadNpmTasks('grunt-express-server');
         grunt.loadNpmTasks('grunt-karma');
 
-
         grunt.registerTask('editHtml',['clean:html','copy:html','copy:partials']);
         grunt.registerTask('lessFiles',['lesslint','clean:css','less']);
         grunt.registerTask('jsFiles',['jshint','clean:javascript','concat:concat']);

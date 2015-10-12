@@ -27,7 +27,8 @@
     "karma-nyan-reporter": "~0.2.2",
     "karma-chrome-launcher": "~0.2.1",
     "phantomjs": "~1.9.18",
-    "karma-phantomjs-launcher": "~0.2.1"
+    "karma-phantomjs-launcher": "~0.2.1",
+    "karma": "~0.13.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
