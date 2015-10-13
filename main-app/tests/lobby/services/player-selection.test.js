@@ -16,11 +16,11 @@
 
         it('Ensures the rotation of player 1 functions correctly', function () {
             constants.selectPlayer(1);
-            constants.player1Type.should.equal('human');
-            constants.selectPlayer(1);
             constants.player1Type.should.equal('pre-trained');
             constants.selectPlayer(1);
             constants.player1Type.should.equal('random');
+            constants.selectPlayer(1);
+            constants.player1Type.should.equal('human');
         });
 
 
