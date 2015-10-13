@@ -18,7 +18,7 @@
             constants[1].should.equal('pre-trained');
         });
 
-        it('Ensures player type 3 is random', function() {
+        it('Ensures player type 2 is random', function() {
             constants[2].should.equal('random');
         });
 
