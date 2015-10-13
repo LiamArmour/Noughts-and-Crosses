@@ -12,9 +12,7 @@
             me.currentStyle = styleTypes[0];
 
             me.toggleCss = function () {
-                console.log('Current: ' + me.currentStyle);
                 me.currentStyle = cssStyleChange();
-                console.log('Next: ' + me.currentStyle);
             };
             me.getCurrentStyle = function(){
                 return me.currentStyle;
