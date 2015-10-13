@@ -1,35 +1,23 @@
 (function () {
     'use strict';
-    describe('Testing the player selection', function () {
+    describe('Testing the style selection', function () {
         var constants;
         beforeEach(function () {
-            module('Tombola.Games.NoughtsAndCrosses.Lobby');
+            module('Tombola.Games.NoughtsAndCrosses.Core');
             inject(function ($injector) {
-                constants = $injector.get('PlayerSelection');
+                constants = $injector.get('StyleSelection');
             });
         });
 
-        it('Ensures both players default to human', function () {
-            constants.player1Type.should.equal('human');
-            constants.player2Type.should.equal('human');
+        it('Ensures minion is the default theme', function () {
+            constants.currentStyle.should.equal('css/minion.css');
         });
 
-        it('Ensures the rotation of player 1 functions correctly', function () {
-            constants.selectPlayer(1);
-            constants.player1Type.should.equal('pre-trained');
-            constants.selectPlayer(1);
-            constants.player1Type.should.equal('random');
-            constants.selectPlayer(1);
-            constants.player1Type.should.equal('human');
-        });
-
-        it('Ensures the rotation of player 2 functions correctly', function () {
-            constants.selectPlayer(2);
-            constants.player2Type.should.equal('pre-trained');
-            constants.selectPlayer(2);
-            constants.player2Type.should.equal('random');
-            constants.selectPlayer(2);
-            constants.player2Type.should.equal('human');
+        it('Ensures the rotation of the themes', function () {
+            constants.cssStyleChange();
+            constants.currentStyle.should.equal('css/football.css');
+            constants.cssStyleChange();
+            constants.currentStyle.should.equal('css/minion.css');
         });
 
     });
