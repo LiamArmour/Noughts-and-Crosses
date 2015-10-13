@@ -23,7 +23,14 @@
             constants.player1Type.should.equal('human');
         });
 
-
+        it('Ensures the rotation of player 2 functions correctly', function () {
+            constants.selectPlayer(2);
+            constants.player2Type.should.equal('pre-trained');
+            constants.selectPlayer(2);
+            constants.player2Type.should.equal('random');
+            constants.selectPlayer(2);
+            constants.player2Type.should.equal('human');
+        });
 
     });
 })();
