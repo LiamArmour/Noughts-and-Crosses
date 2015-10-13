@@ -15,9 +15,9 @@
 
         it('Ensures the rotation of the themes', function () {
             constants.cssStyleChange();
-            constants.currentStyle.should.equal('css/football.css');
-            constants.cssStyleChange();
             constants.currentStyle.should.equal('css/minion.css');
+            constants.cssStyleChange();
+            constants.currentStyle.should.equal('css/football.css');
         });
 
     });
