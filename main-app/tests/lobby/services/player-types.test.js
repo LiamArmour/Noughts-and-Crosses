@@ -18,10 +18,9 @@
             assert.equal('pre-trained', constants[1]);
         });
 
-        it('Ensures player type 3 is pre random', function() {
+        it('Ensures player type 3 is random', function() {
             assert.equal('random', constants[2]);
         });
 
     });
 })();
-
