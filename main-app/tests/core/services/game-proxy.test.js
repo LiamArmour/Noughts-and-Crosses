@@ -21,8 +21,9 @@
                 .respond(theResponse);
             var returnedPromise = proxy.newGame("human", "human");
             var result;
-
-
+            returnedPromise.then(function(response){
+                result = response;
+            });
 
         });
 
