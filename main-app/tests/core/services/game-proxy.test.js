@@ -19,6 +19,9 @@
             var theResponse = {'outcome':'Continue','gameboard':'000000000','winner':0};
             httpBackend.expectPOST("http://eutaveg-01.tombola.emea:35000/api/v1.0/newgame" , {'player1':"human", 'player2':"human"})
                 .respond(theResponse);
+            var returnedPromise = proxy.newGame("human", "human");
+            var result;
+
 
 
         });
