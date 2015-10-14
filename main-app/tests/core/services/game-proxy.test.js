@@ -1,15 +1,15 @@
 (function () {
     'use strict';
 
-    describe("Testing-the-player-selection", function() {
+    describe("Testing-the-game-proxy", function() {
         var constants;
         beforeEach(function() {
-            module('Tombola.Games.NoughtsAndCrosses.Lobby');
+            module('Tombola.Games.NoughtsAndCrosses.Core');
             inject(function($injector) {
-                constants = $injector.get('PlayerTypes');
+                constants = $injector.get('GameProxy');
             });
         });
-        
+
 
     });
 })();
