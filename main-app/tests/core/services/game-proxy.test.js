@@ -17,11 +17,14 @@
             });
         });
 
+        it('Ensures the game makes a turn', function() {
+            
+        });
+
         afterEach(function() {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
         });
-
 
     });
 })();
