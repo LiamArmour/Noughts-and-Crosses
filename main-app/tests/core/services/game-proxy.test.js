@@ -24,7 +24,8 @@
             returnedPromise.then(function(response){
                 result = response;
             });
-
+            httpBackend.flush();
+            result.should.be.deep.equal(theResponse);
         });
 
         afterEach(function() {
