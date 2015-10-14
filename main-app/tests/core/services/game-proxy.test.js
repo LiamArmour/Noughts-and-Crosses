@@ -15,8 +15,8 @@
             });
         });
 
-
-        it('Ensures the game makes a turn', function() {
+        it('Ensures the newGame function is working and returns values', function(){
+            var theResponse = {'outcome':'Continue','gameboard':'000000000','winner':0};
 
         });
 
