@@ -3,8 +3,9 @@
 
     describe("Testing-the-game-proxy", function() {
         var gameProxy,
-            httpServer,
-            requestHnadler;
+            promise,
+            proxy;
+        
         beforeEach(function() {
             module('Tombola.Games.NoughtsAndCrosses.Core');
             inject(function($injector) {
@@ -18,7 +19,7 @@
         });
 
         it('Ensures the game makes a turn', function() {
-            
+
         });
 
         afterEach(function() {
