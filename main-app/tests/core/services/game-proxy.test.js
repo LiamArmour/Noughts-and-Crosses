@@ -1,25 +1,23 @@
 (function () {
     'use strict';
-
-    describe("Testing-the-game-proxy", function() {
+    describe('Test Proxy', function () {
         var httpBackend,
-            promise,
-            proxy;
-
-        beforeEach(function() {
+            returnedPromise,
+            proxyName;
+        beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Core');
-            inject(function($httpBackend, $q, _Proxy_ ){
+            inject(function( $httpBackend, $q, _Proxy_  ){
                 httpBackend = $httpBackend;
-                promise = $q;
-                proxy = _Proxy_;
+                returnedPromise = $q;
+                proxyName = _Proxy_;
+
             });
         });
-
         it('Ensures the newgame function is working and returns values', function(){
             var theResponse = {'outcome':'Continue','gameboard':'000000000','winner':0};
             httpBackend.expectPOST("http://eutaveg-01.tombola.emea:35000/api/v1.0/newgame" , {'player1':"human", 'player2':"human"})
                 .respond(theResponse);
-            var returnedPromise = proxy.newGame("human", "human");
+            var returnedPromise = proxyName.newGame("human", "human");
             var result;
             returnedPromise.then(function(response){
                 result = response;
@@ -33,8 +31,8 @@
             httpBackend.expectPOST("http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove" , {"playerNumber": "1",
                 "chosenSquare": "0"})
                 .respond(theResponse);
-            var returnedPromise = proxy.playerTurn("1", "0");
-            var result;
+            var returnedPromise = proxyName.playerTurn("1", "0"),
+                result;
             returnedPromise.then(function(response){
                 result = response;
             });
@@ -42,10 +40,9 @@
             result.should.be.deep.equal(theResponse);
         });
 
-        afterEach(function() {
-            $httpBackend.verifyNoOutstandingExpectation();
-            $httpBackend.verifyNoOutstandingRequest();
+        afterEach( function(){
+            httpBackend.verifyNoOutstandingExpectation();
+            httpBackend.verifyNoOutstandingRequest();
         });
-
     });
-})();
+}());
