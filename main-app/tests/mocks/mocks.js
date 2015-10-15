@@ -1,9 +1,6 @@
 'use strict';
 var mocks = {
-    GameBoardController: {
-        chooseBlock: function(index){}
-    },
-    EndOfGame: {
-        gameEnded: function () {}
-    },
+    ProxyConstants:{
+        baseURL:"http://eutaveg-01.tombola.emea:35000/api/v1.0/"
+    }
 };
