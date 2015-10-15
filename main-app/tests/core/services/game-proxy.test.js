@@ -8,7 +8,7 @@
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Core');
             inject(function( $httpBackend, $q, _Proxy_  ){
-                httpBackend = $httpBackend;
+                httpBackend = $injector.get('$httpBackend');
                 returnedPromise = $q;
                 proxyName = _Proxy_;
 
