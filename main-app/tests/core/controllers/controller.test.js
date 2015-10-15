@@ -5,6 +5,7 @@
             controller,
             scope;
 
+        beforeEach(module('ui.router'));
         beforeEach(function ($injector) {
             module('Tombola.Games.NoughtsAndCrosses.Core');
 
@@ -25,4 +26,3 @@
     });
 
 })();
-
