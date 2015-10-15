@@ -20,6 +20,8 @@
                     'main-app/app/scripts/gameboard/controllers/*.js',
                     'main-app/app/scripts/gameboard/directives/*.js',
                     'main-app/app/scripts/gameboard/services/*.js',
+
+                    'main-app/app/scripts/lobby/controllers/*.js',
                     'main-app/app/scripts/lobby/services/*.js',
 
                     //Testing files
@@ -30,6 +32,8 @@
                     'main-app/tests/gameboard/controllers/*.js',
                     'main-app/tests/gameboard/directives/*.js',
                     'main-app/tests/gameboard/services/*.js',
+
+                    'main-app/tests/lobby/controllers/*.js',
                     'main-app/tests/lobby/services/*.js'
                 ]
             }
