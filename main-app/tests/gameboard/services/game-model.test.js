@@ -1,17 +1,17 @@
 (function () {
     'use strict';
-    describe('Testing my game proxy', function () {
-        var httpBackend,
+    describe('Testing the game model service', function () {
+        var playerSelection,
             gameProxy;
 
         beforeEach(function () {
-            module('Tombola.Games.NoughtsAndCrosses.Core');
+            module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
-                $provide.value('ProxyConstants', mocks.ProxyConstants);
+                $provide.value('GameModel');
             });
 
             inject(function ($injector) {
-                httpBackend = $injector.get('$httpBackend');
+                playerSelection = $injector.get('PlayerSelection');
                 gameProxy = $injector.get('GameProxy');
             });
 
