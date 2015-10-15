@@ -23,7 +23,14 @@
                     'main-app/app/scripts/lobby/services/*.js',
 
                     //Testing files
+                    'main-app/tests/core/modules.js',
+                    'main-app/tests/core/controllers/*.js',
+                    'main-app/tests/core/directives/*.js',
                     'main-app/tests/core/services/*.js',
+
+                    'main-app/tests/gamebaord/controllers/*.js',
+                    'main-app/tests/gamebaord/directives/*.js',
+                    'main-app/tests/gamebaord/services/*.js',
                     'main-app/tests/lobby/services/*.js'
                 ]
             }
