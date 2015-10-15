@@ -1,19 +1,22 @@
 (function () {
     'use strict';
     describe('Testing the main controller', function () {
-        var controller,
-            scope,
-            state;
+        var state,
+            controller,
+            scope;
 
-        beforeEach(function ($injector) {module('Tombola.Games.NoughtsAndCrosses.Core');
-            state = $injector.get($state);
-            inject(function ($controller, $rootScope) {
+        beforeEach(function ($injector) {
+            module('Tombola.Games.NoughtsAndCrosses.Core');
+
+            inject(function ($controller, $rootScope, $state) {
                 scope = $rootScope.$new();
+                state = $state;
                 controller = $controller('MainController', {
                     $scope: scope
                 });
 
             });
+
         });
 
         it('Ensures the game title is correct', function () {
@@ -22,3 +25,4 @@
     });
 
 })();
+
