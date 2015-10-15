@@ -7,6 +7,8 @@ var mocks = {
         playerSelection: '1',
         currentPlayer: '1',
         gameBoard: '000000000',
-        gameWinner: ''
+        gameWinner: '',
+        takeTurn: function(){},
+        makeNewGame: function(){}
     }
 };
