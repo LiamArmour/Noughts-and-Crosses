@@ -17,20 +17,19 @@
                     'main-app/app/scripts/core/directives/*.js',
                     'main-app/app/scripts/core/services/*.js',
 
-                    'main-app/app/scripts/gamebaord/controllers/*.js',
-                    'main-app/app/scripts/gamebaord/directives/*.js',
-                    'main-app/app/scripts/gamebaord/services/*.js',
+                    'main-app/app/scripts/gameboard/controllers/*.js',
+                    'main-app/app/scripts/gameboard/directives/*.js',
+                    'main-app/app/scripts/gameboard/services/*.js',
                     'main-app/app/scripts/lobby/services/*.js',
 
                     //Testing files
-                    'main-app/tests/core/modules.js',
                     'main-app/tests/core/controllers/*.js',
                     'main-app/tests/core/directives/*.js',
                     'main-app/tests/core/services/*.js',
 
-                    'main-app/tests/gamebaord/controllers/*.js',
-                    'main-app/tests/gamebaord/directives/*.js',
-                    'main-app/tests/gamebaord/services/*.js',
+                    'main-app/tests/gameboard/controllers/*.js',
+                    'main-app/tests/gameboard/directives/*.js',
+                    'main-app/tests/gameboard/services/*.js',
                     'main-app/tests/lobby/services/*.js'
                 ]
             }
