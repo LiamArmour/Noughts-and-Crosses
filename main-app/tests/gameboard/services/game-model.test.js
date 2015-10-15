@@ -11,6 +11,7 @@
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
                 $provide.value('GameModel');
+                $provide.value('PlayerSelection', sinon.mock(PlayerSelection));
             });
 
             inject(function ($injector, $state, $interval) {
