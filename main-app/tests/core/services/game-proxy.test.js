@@ -7,12 +7,12 @@
 
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Core');
-            module(function($provide){
-                $provide.service('GameProxy', mocks.ProxyConstants);
             inject(function( $injector){
                 httpBackend = $injector.get('$httpBackend');
                 proxyName = $injector.get('GameProxy');
 
+                module(function($provide){
+                $provide.service('ProxyConstants', mocks.ProxyConstants);
             });
 
             sandbox = sinon.sandbox.create();
