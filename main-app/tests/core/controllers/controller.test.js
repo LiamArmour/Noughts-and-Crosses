@@ -2,8 +2,11 @@
     'use strict';
     describe('Testing the main controller', function () {
         var controller,
-            scope;
-        beforeEach(function () {module('Tombola.Games.NoughtsAndCrosses.Core');
+            scope,
+            state;
+
+        beforeEach(function ($injector) {module('Tombola.Games.NoughtsAndCrosses.Core');
+            state = $injector.get($state);
             inject(function ($controller, $rootScope) {
                 scope = $rootScope.$new();
                 controller = $controller('MainController', {
