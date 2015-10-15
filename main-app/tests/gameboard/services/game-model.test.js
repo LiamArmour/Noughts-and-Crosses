@@ -26,8 +26,13 @@
             gameProxy.currentPlayer = '1';
         });
 
+        it('Ensures the current player is player 1', function () {
+            gameProxy.gameBoard='000000000';
+        });
 
-
+        it('Ensures the current player is player 1', function () {
+            gameProxy.gameWinner = '';
+        });
 
 
     });

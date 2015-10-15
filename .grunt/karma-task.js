@@ -31,7 +31,7 @@
 
                     'main-app/tests/gameboard/controllers/*.js',
                     'main-app/tests/gameboard/directives/*.js',
-                    'main-app/tests/gameboard/services/*.js',
+                    'main-app/tests/gameboard/services/**/*.js',
 
                     'main-app/tests/lobby/controllers/*.js',
                     'main-app/tests/lobby/services/*.js',
