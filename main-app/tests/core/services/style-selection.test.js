@@ -14,9 +14,9 @@
         });
 
         it('Ensures the rotation of the themes', function () {
-            constants.getCurrentStyle();
+            constants.toggleCss();
             constants.currentStyle.should.equal('css/football.css');
-            constants.getCurrentStyle();
+            constants.toggleCss();
             constants.currentStyle.should.equal('css/minion.css');
         });
 
