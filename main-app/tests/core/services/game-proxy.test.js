@@ -1,9 +1,10 @@
 (function () {
     'use strict';
-    describe('Test Proxy', function () {
+    describe('Testing my game proxy', function () {
         var httpBackend,
             returnedPromise,
             proxyName;
+
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Core');
             inject(function( $httpBackend, $q, _Proxy_  ){
