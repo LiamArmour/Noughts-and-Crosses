@@ -2,15 +2,15 @@
     'use strict';
     describe('Testing my game proxy', function () {
         var httpBackend,
-            returnedPromise,
             proxyName;
+        beforeEach(function(){
 
+        });
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Core');
-            inject(function( $httpBackend, $q, _Proxy_  ){
+            inject(function( $injector){
                 httpBackend = $injector.get('$httpBackend');
-                returnedPromise = $q;
-                proxyName = _Proxy_;
+                proxyName = $injector.get('GameProxy');
 
             });
         });
@@ -22,9 +22,9 @@
             var result;
             returnedPromise.then(function(response){
                 result = response;
+                result.should.be.deep.equal(theResponse);
             });
             httpBackend.flush();
-            result.should.be.deep.equal(theResponse);
         });
 
         it('Ensures the makemove function is working and returns values', function(){
