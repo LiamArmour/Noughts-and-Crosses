@@ -20,5 +20,9 @@ var mocks = {
         selectPlayer: function () {},
         getStartingPlayer: function () {},
         isHumanVsHuman: function () {}
+    },
+
+    GameProxy: {
+        apiCall: function () {}
     }
 };

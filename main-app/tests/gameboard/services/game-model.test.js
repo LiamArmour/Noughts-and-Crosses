@@ -14,6 +14,7 @@
             module(function ($provide) {
                 $provide.value('GameModel');
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
+                $provide.value('PlayerSelection', mocks.PlayerSelection);
             });
             sandbox = sinon.sandbox.create();
             gameModel = sinon.sandbox.mock(mocks.PlayerSelection);
