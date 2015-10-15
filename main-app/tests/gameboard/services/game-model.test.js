@@ -2,17 +2,22 @@
     'use strict';
     describe('Testing the game model service', function () {
         var playerSelection,
+            gameModel,
             gameProxy,
             state,
-            interval;
+            interval,
+            sandbox;
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
                 $provide.value('GameModel');
-                $provide.value('PlayerSelection', sinon.mock(PlayerSelection));
+                $provide.value('PlayerSelection', mocks.PlayerSelection);
             });
+            sandbox = sinon.sandbox.create();
+            gameModel = sinon.sandbox.mock(mocks.PlayerSelection);
+
 
             inject(function ($injector, $state, $interval) {
                 playerSelection = $injector.get('PlayerSelection');
@@ -24,7 +29,7 @@
         });
 
         it('Ensures the current player is player 1', function () {
-            gameProxy.currentPlayer = '1';
+            mocks.CoreData.currentPlayer.should.equal('1');
         });
 
         it('Ensures the current player is player 1', function () {
