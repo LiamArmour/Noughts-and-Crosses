@@ -3,11 +3,12 @@
     describe('Testing the game model service', function () {
         var playerSelection,
             gameModel,
-            gameProxy,
+            gameProxyStub,
             sandbox,
-
+            $q,
             $interval,
-            $stateSpy;
+            $stateSpy,
+            winner1Data = {gameboard:'111111111', outcome:'Win', winner:'2'};
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
@@ -19,133 +20,41 @@
             });
 
             sandbox = sinon.sandbox.create();
-            gameProxy = sinon.sandbox.mock(mocks.Gameproxy);
+
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
             inject(function ($injector) {
                 playerSelection = $injector.get('PlayerSelection');
-                gameProxy = $injector.get('GameProxy');
+                gameProxyStub = $injector.get('GameProxy');
                 gameModel = $injector.get('GameModel');
                 $interval = $injector.get('$interval');
+                $q = $injector.get('$q');
             });
 
         });
 
-        //it.skip('Ensures the current player is player 1', function () {
-        //    mocks.GameModel.currentPlayer =  mocks.GameModel.currentPlayer;
-        //    mocks.GameModel.currentPlayer.should.equal('1');
-        //});
-        //
-        //it.skip('Ensures the outcome starts at Continue', function () {
-        //    mocks.GameModel.outcome =  mocks.GameModel.outcome;
-        //    mocks.GameModel.outcome.should.equal('Continue');
-        //});
-        //
-        //it.skip('Ensures the gameboard loads up empty', function () {
-        //    mocks.GameModel.gameBoard =  mocks.GameModel.gameBoard;
-        //    mocks.GameModel.gameBoard.should.equal('000000000');
-        //});
-        //
-        //it.skip('Ensures the game winner is empty at the start', function () {
-        //    mocks.GameModel.gameWinner =  mocks.GameModel.gameWinner;
-        //    mocks.GameModel.gameWinner.should.equal('');
-        //});
-
-        it('Ensures the checkGameEnded function changes the end game state', function () {
-            gameModel.outcome = 'Win';
-            gameModel.checkGameEnded();
-            //$interval.flush();
-            $stateSpy.should.be.called.once();
-            $stateSpy.should.be.called.with('gameWin');
+        describe('New Game Updates on player 1 win', function(){
+            beforeEach(function(){
+                var deferred = $q.defer();
+                gameProxyStub = sinon.sandbox.stub(mocks.GameProxy, 'apiCall', function(){
+                    return deferred.promise;
+                });
+                gameModel.makeNewGame();
+                deferred.resolve(winner1Data);
+            });
+            it('Ensures game board values are set', function () {
+                gameModel.gameBoard.should.equal(winner1Data.gameboard);
+                gameModel.gameWinner.should.equal(winner1Data.winner);
+            });
+            //it('Ensures the game state transfers to game winner', function () {
+            //    $interval.flush(5000);
+            //    mocks.$state.go.should.be.calledOnce;
+            //    mocks.$state.go.should.be.calledWith('gameWin');
+            //});
         });
 
         afterEach(function(){
             sandbox.restore();
-        })
-
+        });
     });
-
 }());
-
-
-
-//                checkGameEnded = function(){
-//                    $interval(function(){
-//                        if (outcome === "Win") {
-//                            $state.go('gameWin');
-//                        } else if (outcome === "Draw") {
-//                            $state.go('gameDraw');
-//                        }
-//                    },5000, 1);
-//                },
-
-
-
-
-
-
-
-//every under needs testing above
-
-//(function () {
-//    'use strict';
-//    angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-//        .service('GameModel', ['$state', '$interval', 'PlayerSelection','GameProxy', function($state, $interval, playerSelection, gameProxy) {
-//            var me = this,
-
-
-
-//                checkGameEnded = function(){
-//                    $interval(function(){
-//                        if (outcome === "Win") {
-//                            $state.go('gameWin');
-//                        } else if (outcome === "Draw") {
-//                            $state.go('gameDraw');
-//                        }
-//                    },5000, 1);
-//                },
-
-
-
-
-//                updateGameBoard = function(data){
-//                    me.gameBoard = data.gameboard;
-//                    outcome = data.outcome;
-//                    me.gameWinner = data.winner;
-//                    checkGameEnded();
-//                };
-
-//            me.playerSelection = playerSelection;
-
-
-//            me.makeNewGame = function(){
-//                gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
-//                    .then(function(data){
-//                        me.currentPlayer = playerSelection.getStartingPlayer();
-//                        updateGameBoard(data);
-//                    },
-//                    function(data){
-//                        console.log(data);
-//                    });
-//            };
-
-
-//            me.takeTurn = function (index){
-//                if (me.gameBoard[index] !== '0') {
-//                    return;
-//                }
-//                gameProxy.apiCall("makemove", {"playerNumber": me.currentPlayer, "chosenSquare": index})
-//                    .then(function(data){
-//                        updateGameBoard(data);
-//                        if (playerSelection.isHumanVsHuman()){
-//                            me.currentPlayer = me.currentPlayer === 1 ? 2: 1;
-//                        }
-//                    },
-//                    function(data){
-//                        console.log('make move failed: ' + data );
-//                    });
-//            };
-
-
-//        }]);
-//})();
