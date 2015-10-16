@@ -34,7 +34,8 @@
         });
 
         it('Ensures the outcome starts at Continue', function () {
-            gameProxy.outcome.should.equal('Continue');
+            mocks.GameModel.outcome =  mocks.GameModel.outcome;
+            mocks.GameModel.outcome.should.equal('Continue');
         });
 
         it('Ensures the gameboard loads up empty', function () {
@@ -43,7 +44,7 @@
         });
 
         afterEach(function(){
-            GameModel.verify();
+            gameModel.verify();
             sandbox.restore();
         })
 
