@@ -3,22 +3,23 @@
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
         .service('GameModel', ['$state', '$interval', 'PlayerSelection','GameProxy', function($state, $interval, playerSelection, gameProxy) {
             var me = this,
-                outcome = 'Continue',
-                checkGameEnded = function(){
-                    $interval(function(){
-                        if (outcome === "Win") {
-                            $state.go('gameWin');
-                        } else if (outcome === "Draw") {
-                            $state.go('gameDraw');
-                        }
-                    },5000, 1);
-                },
-                updateGameBoard = function(data){
-                    me.gameBoard = data.gameboard;
-                    outcome = data.outcome;
-                    me.gameWinner = data.winner;
-                    checkGameEnded();
-                };
+                outcome = 'Continue';
+
+            me.checkGameEnded = function(){
+                //$interval(function(){
+                    if (outcome === "Win") {
+                        $state.go('gameWin');
+                    } else if (outcome === "Draw") {
+                        $state.go('gameDraw');
+                    }
+                //},5000, 1);
+            };
+            me.updateGameBoard = function(data){
+                me.gameBoard = data.gameboard;
+                outcome = data.outcome;
+                me.gameWinner = data.winner;
+                checkGameEnded();
+            };
             me.playerSelection = playerSelection;
             me.currentPlayer = '1';
             me.gameBoard='000000000';

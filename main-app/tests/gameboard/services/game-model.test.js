@@ -4,61 +4,62 @@
         var playerSelection,
             gameModel,
             gameProxy,
-            state,
-            interval,
             sandbox,
-            $state;
+
+            $interval,
+            $stateSpy;
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
-                $provide.value('GameModel');
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
                 $provide.value('GameProxy', mocks.GameProxy);
                 $provide.value('$state', mocks.$state);
             });
 
             sandbox = sinon.sandbox.create();
-            gameModel = sinon.sandbox.mock(mocks.PlayerSelection);
             gameProxy = sinon.sandbox.mock(mocks.Gameproxy);
-            $state = sinon.sandbox.mock(mocks.$state);
+            $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
-            inject(function ($injector, $state, $interval) {
+            inject(function ($injector) {
                 playerSelection = $injector.get('PlayerSelection');
                 gameProxy = $injector.get('GameProxy');
-                state = $state;
-                interval = $interval;
+                gameModel = $injector.get('GameModel');
+                $interval = $injector.get('$interval');
             });
 
         });
 
-        it('Ensures the current player is player 1', function () {
-            mocks.GameModel.currentPlayer =  mocks.GameModel.currentPlayer;
-            mocks.GameModel.currentPlayer.should.equal('1');
-        });
+        //it.skip('Ensures the current player is player 1', function () {
+        //    mocks.GameModel.currentPlayer =  mocks.GameModel.currentPlayer;
+        //    mocks.GameModel.currentPlayer.should.equal('1');
+        //});
+        //
+        //it.skip('Ensures the outcome starts at Continue', function () {
+        //    mocks.GameModel.outcome =  mocks.GameModel.outcome;
+        //    mocks.GameModel.outcome.should.equal('Continue');
+        //});
+        //
+        //it.skip('Ensures the gameboard loads up empty', function () {
+        //    mocks.GameModel.gameBoard =  mocks.GameModel.gameBoard;
+        //    mocks.GameModel.gameBoard.should.equal('000000000');
+        //});
+        //
+        //it.skip('Ensures the game winner is empty at the start', function () {
+        //    mocks.GameModel.gameWinner =  mocks.GameModel.gameWinner;
+        //    mocks.GameModel.gameWinner.should.equal('');
+        //});
 
-        it('Ensures the outcome starts at Continue', function () {
-            mocks.GameModel.outcome =  mocks.GameModel.outcome;
-            mocks.GameModel.outcome.should.equal('Continue');
-        });
-
-        it('Ensures the gameboard loads up empty', function () {
-            mocks.GameModel.gameBoard =  mocks.GameModel.gameBoard;
-            mocks.GameModel.gameBoard.should.equal('000000000');
-        });
-
-        it('Ensures the game winner is empty at the start', function () {
-            mocks.GameModel.gameWinner =  mocks.GameModel.gameWinner;
-            mocks.GameModel.gameWinner.should.equal('');
-        });
-
-        it('Ensures ', function () {
-
+        it('Ensures the checkGameEnded function changes the end game state', function () {
+            gameModel.outcome = 'Win';
+            gameModel.checkGameEnded();
+            //$interval.flush();
+            $stateSpy.should.be.called.once();
+            $stateSpy.should.be.called.with('gameWin');
         });
 
         afterEach(function(){
-            gameModel.verify();
             sandbox.restore();
         })
 
