@@ -58,13 +58,8 @@
 
 }());
 
-//every under needs testing above
 
-//(function () {
-//    'use strict';
-//    angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-//        .service('GameModel', ['$state', '$interval', 'PlayerSelection','GameProxy', function($state, $interval, playerSelection, gameProxy) {
-//            var me = this,
+
 //                checkGameEnded = function(){
 //                    $interval(function(){
 //                        if (outcome === "Win") {
@@ -74,6 +69,29 @@
 //                        }
 //                    },5000, 1);
 //                },
+
+//every under needs testing above
+
+//(function () {
+//    'use strict';
+//    angular.module('Tombola.Games.NoughtsAndCrosses.Game')
+//        .service('GameModel', ['$state', '$interval', 'PlayerSelection','GameProxy', function($state, $interval, playerSelection, gameProxy) {
+//            var me = this,
+
+
+
+//                checkGameEnded = function(){
+//                    $interval(function(){
+//                        if (outcome === "Win") {
+//                            $state.go('gameWin');
+//                        } else if (outcome === "Draw") {
+//                            $state.go('gameDraw');
+//                        }
+//                    },5000, 1);
+//                },
+
+
+
 
 //                updateGameBoard = function(data){
 //                    me.gameBoard = data.gameboard;

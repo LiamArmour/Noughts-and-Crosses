@@ -25,6 +25,9 @@ var mocks;
         },
         GameProxy: {
             apiCall: function () {}
+        },
+        $state: {
+            go: function () {}
         }
     };
 })();
