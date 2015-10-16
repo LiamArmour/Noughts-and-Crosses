@@ -38,8 +38,14 @@
         });
 
         it('Ensures the gameboard loads up empty', function () {
-            mocks.gameBoard.should.equal('000000000');
+            mocks.GameModel.gameBoard =  mocks.CharacterLogic.humanLogic(2);
+            mocks.GameModel.gameBoard.should.equal('000000000');
         });
+
+        afterEach(function(){
+            GameModel.verify();
+            sandbox.restore();
+        })
 
     });
 
