@@ -38,7 +38,7 @@
         });
 
         it('Ensures the gameboard loads up empty', function () {
-            mocks.GameModel.gameBoard =  mocks.CharacterLogic.humanLogic(2);
+            mocks.GameModel.gameBoard =  mocks.GameModel.gameBoard;
             mocks.GameModel.gameBoard.should.equal('000000000');
         });
 
