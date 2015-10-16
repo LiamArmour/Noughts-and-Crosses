@@ -44,6 +44,11 @@
             mocks.GameModel.gameBoard.should.equal('000000000');
         });
 
+        it('Ensures the game winner is empty at the start', function () {
+            mocks.GameModel.gameWinner =  mocks.GameModel.gameWinner;
+            mocks.GameModel.gameWinner.should.equal('');
+        });
+
         afterEach(function(){
             gameModel.verify();
             sandbox.restore();
@@ -78,7 +83,6 @@
 //                };
 
 //            me.playerSelection = playerSelection;
-//            me.gameWinner = '';
 
 //            me.makeNewGame = function(){
 //                gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
