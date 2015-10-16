@@ -27,9 +27,8 @@ var mocks;
             apiCall: function () {}
         },
         $state: {
-            go: function (state) {$current = state;},
+            go: function () {},
             $current: 'playerSelection'
-
         }
     };
 })();

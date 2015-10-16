@@ -6,7 +6,8 @@
             gameProxy,
             state,
             interval,
-            sandbox;
+            sandbox,
+            $state;
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
@@ -20,7 +21,8 @@
 
             sandbox = sinon.sandbox.create();
             gameModel = sinon.sandbox.mock(mocks.PlayerSelection);
-            gameProxy= sinon.sandbox.mock(mocks.Gameproxy);
+            gameProxy = sinon.sandbox.mock(mocks.Gameproxy);
+            $state = sinon.sandbox.mock(mocks.$state);
 
             inject(function ($injector, $state, $interval) {
                 playerSelection = $injector.get('PlayerSelection');
@@ -51,7 +53,7 @@
             mocks.GameModel.gameWinner.should.equal('');
         });
 
-        it('Ensures the game winner is empty at the start', function () {
+        it('Ensures ', function () {
 
         });
 
