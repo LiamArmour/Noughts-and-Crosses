@@ -6,7 +6,6 @@
             gameProxy,
             state,
             interval,
-            mocks,
             sandbox;
 
         beforeEach(module('ui.router'));
