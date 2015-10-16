@@ -30,7 +30,8 @@
         });
 
         it('Ensures the current player is player 1', function () {
-            mocks.currentPlayer.should.equal('1');
+            mocks.GameModel.currentPlayer =  mocks.GameModel.currentPlayer;
+            mocks.GameModel.currentPlayer.should.equal('1');
         });
 
         it('Ensures the outcome starts at Continue', function () {
