@@ -15,7 +15,9 @@
                 $provide.value('GameModel');
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
                 $provide.value('GameProxy', mocks.GameProxy);
+                $provide.value('$state', mocks.$state);
             });
+
             sandbox = sinon.sandbox.create();
             gameModel = sinon.sandbox.mock(mocks.PlayerSelection);
             gameProxy= sinon.sandbox.mock(mocks.Gameproxy);
@@ -49,6 +51,10 @@
             mocks.GameModel.gameWinner.should.equal('');
         });
 
+        it('Ensures the game winner is empty at the start', function () {
+
+        });
+
         afterEach(function(){
             gameModel.verify();
             sandbox.restore();
@@ -69,6 +75,12 @@
 //                        }
 //                    },5000, 1);
 //                },
+
+
+
+
+
+
 
 //every under needs testing above
 
