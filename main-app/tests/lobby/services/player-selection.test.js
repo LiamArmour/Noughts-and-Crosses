@@ -36,8 +36,19 @@
             playerSelection.isHumanVsHuman().should.equal(true);
         });
 
-        it('Ensures the isHumanVsHuman will be true', function () {
+        it('Ensures the player 2 is not human', function () {
             playerSelection.selectPlayer(2);
+            playerSelection.isHumanVsHuman().should.equal(false);
+        });
+
+        it('Ensures the player 1 is not human', function () {
+            playerSelection.selectPlayer(1);
+            playerSelection.isHumanVsHuman().should.equal(false);
+        });
+
+        it('Ensures they are both not human', function () {
+            playerSelection.player1Type = 'random';
+            playerSelection.player2Type = 'random';
             playerSelection.isHumanVsHuman().should.equal(false);
         });
 
