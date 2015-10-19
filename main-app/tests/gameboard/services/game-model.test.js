@@ -8,7 +8,7 @@
             $q,
             $interval,
             $stateSpy,
-            winner1Data = {gameboard:'000000000', outcome:'Win', winner:'2'};
+            winner1Data = {gameboard:'111111111', outcome:'Win', winner:'2'};
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
@@ -20,7 +20,6 @@
             });
 
             sandbox = sinon.sandbox.create();
-
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
             inject(function ($injector) {
@@ -46,11 +45,11 @@
                 gameModel.gameBoard.should.equal(winner1Data.gameboard);
                 gameModel.gameWinner.should.equal(winner1Data.winner);
             });
-            it('Ensures the game state transfers to game winner', function () {
-                $interval.flush(5000);
-                mocks.$state.go.should.be.calledOnce;
-                mocks.$state.go.should.be.calledWith('gameWin');
-            });
+            //it('Ensures the game state transfers to game winner', function () {
+            //    $interval.flush(5000);
+            //    mocks.$state.go.should.be.calledOnce;
+            //    mocks.$state.go.should.be.calledWith('gameWin');
+            //});
         });
 
         afterEach(function(){

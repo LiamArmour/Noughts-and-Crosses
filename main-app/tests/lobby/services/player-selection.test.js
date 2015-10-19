@@ -1,35 +1,44 @@
 (function () {
     'use strict';
     describe('Testing the player selection', function () {
-        var constants;
+        var playerSelection;
         beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses.Lobby');
             inject(function ($injector) {
-                constants = $injector.get('PlayerSelection');
+                playerSelection = $injector.get('PlayerSelection');
             });
         });
 
         it('Ensures both players default to human', function () {
-            constants.player1Type.should.equal('human');
-            constants.player2Type.should.equal('human');
+            playerSelection.player1Type.should.equal('human');
+            playerSelection.player2Type.should.equal('human');
         });
 
         it('Ensures the rotation of player 1 functions correctly', function () {
-            constants.selectPlayer(1);
-            constants.player1Type.should.equal('pre-trained');
-            constants.selectPlayer(1);
-            constants.player1Type.should.equal('random');
-            constants.selectPlayer(1);
-            constants.player1Type.should.equal('human');
+            playerSelection.selectPlayer(1);
+            playerSelection.player1Type.should.equal('pre-trained');
+            playerSelection.selectPlayer(1);
+            playerSelection.player1Type.should.equal('random');
+            playerSelection.selectPlayer(1);
+            playerSelection.player1Type.should.equal('human');
         });
 
         it('Ensures the rotation of player 2 functions correctly', function () {
-            constants.selectPlayer(2);
-            constants.player2Type.should.equal('pre-trained');
-            constants.selectPlayer(2);
-            constants.player2Type.should.equal('random');
-            constants.selectPlayer(2);
-            constants.player2Type.should.equal('human');
+            playerSelection.selectPlayer(2);
+            playerSelection.player2Type.should.equal('pre-trained');
+            playerSelection.selectPlayer(2);
+            playerSelection.player2Type.should.equal('random');
+            playerSelection.selectPlayer(2);
+            playerSelection.player2Type.should.equal('human');
+        });
+
+        it('Ensures the isHumanVsHuman will be true', function () {
+            playerSelection.isHumanVsHuman().should.equal(true);
+        });
+
+        it('Ensures the isHumanVsHuman will be true', function () {
+            playerSelection.selectPlayer(2);
+            playerSelection.isHumanVsHuman().should.equal(false);
         });
 
     });
