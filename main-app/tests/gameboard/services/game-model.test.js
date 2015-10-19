@@ -46,11 +46,11 @@
                 gameModel.gameBoard.should.equal(winner1Data.gameboard);
                 gameModel.gameWinner.should.equal(winner1Data.winner);
             });
-            //it('Ensures the game state transfers to game winner', function () {
-            //    $interval.flush(5000);
-            //    mocks.$state.go.should.be.calledOnce;
-            //    mocks.$state.go.should.be.calledWith('gameWin');
-            //});
+            it('Ensures the game state transfers to game winner', function () {
+                $interval.flush(5000);
+                mocks.$state.go.should.be.calledOnce;
+                mocks.$state.go.should.be.calledWith('gameWin');
+            });
         });
 
         afterEach(function(){
