@@ -8,7 +8,7 @@
             $q,
             $interval,
             $stateSpy,
-            winner1Data = {gameboard:'111111111', outcome:'Win', winner:'2'};
+            winner1Data = {gameboard:'000000000', outcome:'Win', winner:'2'};
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
