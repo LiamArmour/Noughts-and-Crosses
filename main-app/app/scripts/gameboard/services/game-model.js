@@ -27,13 +27,14 @@
             me.gameWinner = '';
 
             me.makeNewGame = function(){
-                gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
-                    .then(function(data){
+                var myPromise = gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type});
+                    myPromise.then(function(data){
+                        console.log('*****************************************************************');
                         me.currentPlayer = playerSelection.getStartingPlayer();
                         updateGameBoard(data);
-                    },
-                    function(data){
+                    }).catch(function(data){
                         /* Error stub */
+                        console.log('*****************************************************************');
                         console.log(data);
                     });
             };
