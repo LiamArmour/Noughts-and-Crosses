@@ -12,6 +12,7 @@
         it('Ensures the string is equal to the correct url', function () {
             constants.baseURL.should.equal('http://eutaveg-01.tombola.emea:35000/api/v1.0/');
         });
+        
     });
 
 })();
