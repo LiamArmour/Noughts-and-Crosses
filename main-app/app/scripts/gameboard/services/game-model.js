@@ -19,20 +19,23 @@
                     me.gameWinner = data.winner;
                     checkGameEnded();
                 };
+
+
             me.playerSelection = playerSelection;
             me.currentPlayer = '1';
             me.gameBoard='000000000';
             me.gameWinner = '';
+
             me.makeNewGame = function(){
-                gameProxy.apiCall("newgame",{"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
-                    .then(function(data){
+                var myPromise = gameProxy.apiCall("newgame", {"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type}).then(function(data){
                         me.currentPlayer = playerSelection.getStartingPlayer();
                         updateGameBoard(data);
-                    },
-                    function(data){
+                    }).catch(function(data){
+                        /* Error stub */
                         console.log(data);
                     });
             };
+
             me.takeTurn = function (index){
                 if (me.gameBoard[index] !== '0') {
                     return;
