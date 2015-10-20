@@ -8,10 +8,12 @@
             $q,
             $interval,
             $stateSpy,
-            winner1Data = {gameboard:'111111111', outcome:'Win', winner:'2'};
+            $rootScope,
+            winner1Data = {gameboard:'111111111', outcome:'Win', winner:''};
+            //winner1Data = {gameboard:'000000000', outcome:'Win', winner:''};
 
         beforeEach(function () {
-            module('ui.router')
+            module('ui.router');
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
@@ -22,13 +24,14 @@
             sandbox = sinon.sandbox.create();
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
-            inject(function ($injector) {
+            inject(['$rootScope', '$injector', function (_$rootScope_, $injector) {
+                $rootScope = _$rootScope_;
                 playerSelection = $injector.get('PlayerSelection');
                 gameProxyStub = $injector.get('GameProxy');
                 gameModel = $injector.get('GameModel');
                 $interval = $injector.get('$interval');
                 $q = $injector.get('$q');
-            });
+            }]);
         });
 
         it('ensure the starting player is player one', function(){
@@ -47,21 +50,27 @@
             gameModel.playerSelection.should.deep.equal(mocks.PlayerSelection);
         });
 
+
+
         it('Ensures game board values are set', function () {
             var deferred = $q.defer();
 
-            gameProxyStub = sinon.sandbox.stub(mocks.GameProxy, 'apiCall', function(foo, bar){
-                console.log(foo);
-                console.log(bar)
-                return deferred.promise;
-            });
-            
+            var test = sinon.stub(mocks.GameProxy, 'apiCall');
+            //console.log(mocks.GameProxy);
+            test.returns(deferred.promise);
+
             gameModel.makeNewGame();
 
+            gameModel.gameBoard.should.equal('000000000');
+
             deferred.resolve(winner1Data);
+            $rootScope.$digest();
+
             gameModel.gameBoard.should.equal(winner1Data.gameboard);
             gameModel.gameWinner.should.equal(winner1Data.winner);
         });
+
+
 
         //describe('New Game Updates on player 1 win', function(){
         //
