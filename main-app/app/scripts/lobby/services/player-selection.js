@@ -15,14 +15,17 @@
                 var playerTypeName = 'player' + playerNumber + 'Type';
                 me[playerTypeName] = selectCharacter(me[playerTypeName]);
             };
-            me.getStartingPlayer = function(){
-                if (me.player1Type !== humanPlayer && me.player2Type === humanPlayer){
-                    return 2;
-                }
-                return 1;
+
+            me.isPlayer1Human = function (){
+                return me.player1Type === humanPlayer;
             };
+
+            me.isPlayer2Human = function (){
+                return me.player2Type === humanPlayer;
+            };
+
             me.isHumanVsHuman = function(){
-                return me.player1Type === humanPlayer && me.player2Type === humanPlayer;
+                return me.isPlayer1Human() && me.isPlayer2Human();
             };
         }]);
 })();

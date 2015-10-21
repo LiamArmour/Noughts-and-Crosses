@@ -51,18 +51,12 @@
         });
 
 
-
-        it('Ensures game board values are set', function () {
+        it(' New game game won sets values and ends', function () {
             var deferred = $q.defer();
-
             var test = sinon.stub(mocks.GameProxy, 'apiCall');
-            //console.log(mocks.GameProxy);
             test.returns(deferred.promise);
 
             gameModel.makeNewGame();
-
-            gameModel.gameBoard.should.equal('000000000');
-
             deferred.resolve(winner1Data);
             $rootScope.$digest();
 
@@ -71,17 +65,6 @@
         });
 
 
-
-        //describe('New Game Updates on player 1 win', function(){
-        //
-        //
-        //
-        //    //it('Ensures the game state transfers to game winner', function () {
-        //    //    $interval.flush(5000);
-        //    //    mocks.$state.go.should.be.calledOnce;
-        //    //    mocks.$state.go.should.be.calledWith('gameWin');
-        //    //});
-        //});
 
         afterEach(function(){
             sandbox.restore();

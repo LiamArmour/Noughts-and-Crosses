@@ -20,5 +20,16 @@
             constants.currentStyle.should.equal('css/minion.css');
         });
 
+        it('Ensures the rotation returns football if the button is clicked once', function(){
+            constants.toggleCss();
+            constants.currentStyle.should.equal('css/football.css');
+        });
+
+        it('Ensures the rotation returns to minion if the button is clicked twice', function(){
+            constants.toggleCss();
+            constants.toggleCss();
+            constants.currentStyle.should.equal('css/minion.css');
+        });
+
     });
 })();

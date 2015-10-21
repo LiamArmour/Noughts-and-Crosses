@@ -18,7 +18,19 @@
                     outcome = data.outcome;
                     me.gameWinner = data.winner;
                     checkGameEnded();
+                },
+                togglePlayer = function(){
+                    if (playerSelection.isHumanVsHuman()){
+                        me.currentPlayer = me.currentPlayer === 1 ? 2: 1;
+                    }
+                },
+                getStartingPlayer = function(){
+                    if (!playerSelection.isPlayer1Human && playerSelection.isPlayer2Human){
+                        return 2;
+                    }
+                    return 1;
                 };
+
 
 
             me.playerSelection = playerSelection;
@@ -27,13 +39,14 @@
             me.gameWinner = '';
 
             me.makeNewGame = function(){
-                var myPromise = gameProxy.apiCall("newgame", {"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type}).then(function(data){
-                        me.currentPlayer = playerSelection.getStartingPlayer();
+                gameProxy.apiCall("newgame", {"player1" : playerSelection.player1Type, "player2" : playerSelection.player2Type})
+                    .then(function(data){
+                        me.currentPlayer = getStartingPlayer();
                         updateGameBoard(data);
                     }).catch(function(data){
                         /* Error stub */
                         console.log(data);
-                    });
+                });
             };
 
             me.takeTurn = function (index){
@@ -43,9 +56,7 @@
                 gameProxy.apiCall("makemove", {"playerNumber": me.currentPlayer, "chosenSquare": index})
                     .then(function(data){
                         updateGameBoard(data);
-                        if (playerSelection.isHumanVsHuman()){
-                            me.currentPlayer = me.currentPlayer === 1 ? 2: 1;
-                        }
+                        togglePlayer();
                     },
                     function(data){
                         console.log('make move failed: ' + data );
