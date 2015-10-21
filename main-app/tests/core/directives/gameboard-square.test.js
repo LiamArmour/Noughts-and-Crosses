@@ -12,15 +12,17 @@
             });
         });
 
-        it.only('Ensure that the gameboard square directive inputs each of the 9 squares', function() {
+        it.only('Ensure that the game board square directive inputs each of the 9 squares', function() {
 
-            var directiveElement = '<div class="cell player{{model.gameBoard['+ attributes.squareNumber+']}}" ng-click="model.takeTurn('+attributes.squareNumber+')"></div>';
+            var directiveElement = '<game-board-square square-number="0" class="cell"></game-board-square>';
 
-            $rootScopeProvider.gameModel = {gameBoardSquare: '0'};
-            var element = $compile(directiveElement)(rootScope);
+            $rootScope.gameBoard = function(){return [1,0,0,0,0,0,0,0,0]};
+            var element = $compile(directiveElement)($rootScope);
             $rootScope.$digest();
 
-            element[0].toString().should.equal('[object HTMLImageElement]');
+            var subElement = element.find('div');
+
+
 
         });
         
