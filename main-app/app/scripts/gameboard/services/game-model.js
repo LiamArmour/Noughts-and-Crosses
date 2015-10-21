@@ -30,9 +30,7 @@
                     }
                     return 1;
                 };
-
-
-
+            
             me.playerSelection = playerSelection;
             me.currentPlayer = '1';
             me.gameBoard='000000000';
