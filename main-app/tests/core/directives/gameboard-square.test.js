@@ -22,6 +22,8 @@
 
             var subElement = element.find('div');
 
+            subElement.attr('class').should.equal('cell player1');
+
 
 
         });
