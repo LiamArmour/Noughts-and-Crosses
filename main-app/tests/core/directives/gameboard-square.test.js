@@ -13,7 +13,7 @@
         });
 
         it.only('Ensure that the gameboard square directive inputs each of the 9 squares', function() {
-            
+
             var directiveElement = '<div class="cell player{{model.gameBoard['+ attributes.squareNumber+']}}" ng-click="model.takeTurn('+attributes.squareNumber+')"></div>';
 
             $rootScopeProvider.gameModel = {gameBoardSquare: '0'};
