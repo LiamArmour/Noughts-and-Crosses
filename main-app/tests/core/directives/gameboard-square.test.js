@@ -23,7 +23,7 @@
             var subElement = element.find('div');
 
             subElement.attr('class').should.equal('cell player1');
-            subElement.attr('ng-click').should.equal('model.takeTurn1');
+            subElement.attr('ng-click').should.equal('model.takeTurn(1)');
 
         });
         
