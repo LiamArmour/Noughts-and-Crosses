@@ -12,7 +12,7 @@
             });
         });
 
-        it.only('Ensure that the game board square directive inputs date for each of the 9 squares', function() {
+        it('Ensure that the game board square directive inputs date for each of the 9 squares', function() {
 
             var directiveElement = '<game-board-square square-number="0" class="cell"></game-board-square>';
 
