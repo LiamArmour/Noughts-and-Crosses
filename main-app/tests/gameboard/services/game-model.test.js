@@ -53,8 +53,8 @@
 
         it(' New game game won sets values and ends', function () {
             var deferred = $q.defer();
-            var test = sinon.stub(mocks.GameProxy, 'apiCall');
-            test.returns(deferred.promise);
+            var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
+            newGameTest.returns(deferred.promise);
 
             gameModel.makeNewGame();
             deferred.resolve(winner1Data);
