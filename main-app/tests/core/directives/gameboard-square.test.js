@@ -11,6 +11,10 @@
                 $rootScope = _$rootScope_;
             })
         });
+
+        it('Ensure that the gameboard square directive inputs each of the 9 squares', function() {
+
+        });
         
     });
 
