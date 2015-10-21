@@ -64,6 +64,19 @@
             gameModel.gameWinner.should.equal(winner1Data.winner);
         });
 
+        it('Ensures the take turn function works', function () {
+            var deferred = $q.defer();
+            var test = sinon.stub(mocks.GameProxy, 'apiCall');
+            test.returns(deferred.promise);
+
+            gameModel.takeTurn();
+            deferred.resolve(takeTurnData);
+            $rootScope.$digest();
+
+            gameModel.gameBoard.should.equal(winner1Data.gameboard);
+            gameModel.gameWinner.should.equal(winner1Data.winner);
+        });
+
 
 
         afterEach(function(){
