@@ -10,7 +10,7 @@
             styleSelection;
 
         beforeEach(module('ui.router'));
-        beforeEach(function ($injector) {
+        beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses.Core');
 
 
@@ -26,14 +26,14 @@
                 gameModel = $injector('GameModel');
                 styleSelection = $injector('StyleSelection');
 
-            });
+            })
 
             sandbox =sinon.sandbox.create();
             stateSpy = sinon.sandbox.spy(mocks.$state,'go');
 
         });
 
-        it('Ensures the game title is correct', function () {
+        it.only('Ensures the game title is correct', function () {
             controller.gameTitle.should.equal('Noughts and Crosses');
         });
     });
