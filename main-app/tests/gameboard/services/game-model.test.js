@@ -3,7 +3,8 @@
     describe('Testing the game model service', function () {
         var playerSelection,
             gameModel,
-            gameProxyStub,
+            endOfGame,
+            gameApi,
             sandbox,
             $q,
             $stateSpy;
@@ -13,7 +14,7 @@
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
-                $provide.value('GameProxy', mocks.GameProxy);
+                $provide.value('GameApi', mocks.GameProxy);
                 $provide.value('$state', mocks.$state);
             });
 
@@ -22,8 +23,9 @@
 
             inject(['$injector', function ($injector) {
                 playerSelection = $injector.get('PlayerSelection');
-                gameProxyStub = $injector.get('GameApi');
-                gameModel = $injector.get('EndOfGameService');
+                gameApi = $injector.get('GameApi');
+                gameModel = $injector.get('GameModel');
+                endOfGame = $injector.get('EndOfGameService');
                 $q = $injector.get('$q');
             }]);
         });
@@ -39,11 +41,7 @@
         it('ensure the there is no game winner at the start', function(){
             gameModel.gameWinner.should.equal('');
         });
-
-        it('ensure there is 2 starting players to begin the game', function(){
-            gameModel.playerSelection.should.deep.equal(mocks.PlayerSelection);
-        });
-
+        
         afterEach(function(){
             //sinon.stub.reset();
             sandbox.restore();
