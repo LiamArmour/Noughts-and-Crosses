@@ -6,11 +6,7 @@
             gameProxyStub,
             sandbox,
             $q,
-            $interval,
-            $stateSpy,
-            $rootScope,
-            winner1Data = {gameboard:'111111111', outcome:'Win', winner:''},
-            takeTurnData = {"outcome":"Continue","gameboard":"120000000","winner":0};
+            $stateSpy;
 
         beforeEach(function () {
             module('ui.router');
@@ -24,12 +20,10 @@
             sandbox = sinon.sandbox.create();
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
-            inject(['$rootScope', '$injector', function (_$rootScope_, $injector) {
-                $rootScope = _$rootScope_;
+            inject(['$injector', function ($injector) {
                 playerSelection = $injector.get('PlayerSelection');
-                gameProxyStub = $injector.get('GameProxy');
-                gameModel = $injector.get('GameModel');
-                $interval = $injector.get('$interval');
+                gameProxyStub = $injector.get('GameApi');
+                gameModel = $injector.get('EndOfGameService');
                 $q = $injector.get('$q');
             }]);
         });
@@ -48,33 +42,6 @@
 
         it('ensure there is 2 starting players to begin the game', function(){
             gameModel.playerSelection.should.deep.equal(mocks.PlayerSelection);
-        });
-
-
-        it(' New game game won sets values and ends', function () {
-            var deferred = $q.defer();
-            var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
-            newGameTest.returns(deferred.promise);
-
-            gameModel.makeNewGame();
-            deferred.resolve(winner1Data);
-            $rootScope.$digest();
-
-            gameModel.gameBoard.should.equal(winner1Data.gameboard);
-            gameModel.gameWinner.should.equal(winner1Data.winner);
-        });
-
-        it.skip('Ensures the take turn function works', function () {
-            var deferred = $q.defer();
-            var takeTurnTest = sinon.stub(mocks.GameProxy, 'apiCall');
-            takeTurnTest.returns(deferred.promise);
-
-            gameModel.takeTurn();
-            deferred.resolve(takeTurnData);
-            $rootScope.$digest();
-
-            //gameModel.gameBoard.should.equal(winner1Data.gameboard);
-            //gameModel.gameWinner.should.equal(winner1Data.winner);
         });
 
         afterEach(function(){
