@@ -4,29 +4,25 @@
         var state,
             controller,
             scope,
-            gameModel,
             sandbox,
-            stateSpy,
-            styleSelection;
+            stateSpy;
 
         beforeEach(module('ui.router'));
         beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses.Core');
 
-
-            //Mock these in GameModel,StyleSelection
-
-            inject(function ($injector, $controller, $rootScope, $state, GameModel, StyleSelection) {
+            inject(function ($injector, $controller, $rootScope, $state, StyleSelection) {
                 scope = $rootScope.$new();
                 state = $state;
                 controller = $controller('MainController', {
                     $scope: scope,
-                    $state:mocks.$state
-                });
-                gameModel = $injector('GameModel');
-                styleSelection = $injector('StyleSelection');
+                    $state:mocks.$state,
+                    GameModel: mocks.GameModel,
+                    StyleSelection: mocks.StyleSelection
 
-            })
+                });
+
+            });
 
             sandbox =sinon.sandbox.create();
             stateSpy = sinon.sandbox.spy(mocks.$state,'go');
@@ -39,7 +35,6 @@
     });
 
 })();
-
 
 //(function () {
 //    'use strict';

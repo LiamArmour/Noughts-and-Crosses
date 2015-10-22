@@ -16,4 +16,12 @@ var mocks = {
         },
     },
 
+    StyleSelection:{
+        cssStyleChange: function () {},
+        currentStyle: 'css/minion.css',
+        toggleCss: function () {},
+        getCurrentStyle: function(){}
+
+        }
+
 };
