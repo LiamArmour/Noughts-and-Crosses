@@ -49,8 +49,7 @@
         it('Ensures the take turn function is working', function(){
 
         });
-
-
+        
         afterEach(function(){
             //sinon.stub.reset();
             sandbox.restore();
