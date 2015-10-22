@@ -27,5 +27,16 @@
             me.isHumanVsHuman = function(){
                 return me.isPlayer1Human() && me.isPlayer2Human();
             };
+
+            //TODO: add unit test
+            me.getStartingPlayer = function(){
+                if (!me.isPlayer2Human()){
+                    return 1;
+                }
+                if (me.isPlayer1Human()){
+                    return 1;
+                }
+                return 2;
+            };
         }]);
 })();
