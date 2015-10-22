@@ -41,7 +41,16 @@
         it('ensure the there is no game winner at the start', function(){
             gameModel.gameWinner.should.equal('');
         });
-        
+
+        it('Ensures the new game function is working', function(){
+
+        });
+
+        it('Ensures the take turn function is working', function(){
+
+        });
+
+
         afterEach(function(){
             //sinon.stub.reset();
             sandbox.restore();
