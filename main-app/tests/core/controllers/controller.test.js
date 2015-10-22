@@ -4,31 +4,27 @@
     describe('Testing the main controller', function () {
         var $scope,
             controller,
-            scope,
             sandbox,
             $rootScope;
 
-        beforeEach(module('ui.router'));
         beforeEach(function(){
+            module('ui.router');
             module('Tombola.Games.NoughtsAndCrosses.Core');
             inject(function (_$rootScope_, $controller) {
                 $rootScope = _$rootScope_;
                 $scope = $rootScope.$new();
                 sandbox = sinon.sandbox.create();
                 controller = $controller('MainController', {
-                    $scope: scope,
+                    $scope: $scope,
                     $state:mocks.$state,
                     GameModel: mocks.GameModel,
                     StyleSelection: mocks.StyleSelection
-                })
-
+                });
             });
-
         });
 
-        it.only('Ensures the game title is correct', function () {
-            console.log(controller);
-            console.log(controller.gameTitle);
+
+        it('Ensures the game title is correct', function () {
             controller.gameTitle.should.equal('Noughts and Crosses');
         });
 
