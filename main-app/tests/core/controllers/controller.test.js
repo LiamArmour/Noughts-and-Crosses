@@ -1,8 +1,8 @@
 (function () {
     'use strict';
+
     describe('Testing the main controller', function () {
         var $scope,
-            state,
             controller,
             scope,
             sandbox,
@@ -27,10 +27,10 @@
         });
 
         it.only('Ensures the game title is correct', function () {
-                console.log(controller);
-                console.log(controller.gameTitle);
-                controller.gameTitle.should.equal('Noughts and Crosses');
-            });
+            console.log(controller);
+            console.log(controller.gameTitle);
+            controller.gameTitle.should.equal('Noughts and Crosses');
+        });
 
         afterEach(function(){
             sandbox.restore();
@@ -39,6 +39,7 @@
     });
 
 })();
+
 
 //sandbox =sinon.sandbox.create();
 //stateSpy = sinon.sandbox.spy(mocks.$state,'go');
