@@ -1,42 +1,47 @@
 (function () {
     'use strict';
     describe('Testing the main controller', function () {
-        var state,
+        var $scope,
+            state,
             controller,
             scope,
             sandbox,
-            stateSpy;
+            $rootScope;
 
         beforeEach(module('ui.router'));
-        beforeEach(function () {
+        beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Core');
-
-            inject(function ($injector, $controller, $rootScope, $state, StyleSelection) {
-                scope = $rootScope.$new();
-                state = $state;
+            inject(function (_$rootScope_, $controller) {
+                $rootScope = _$rootScope_;
+                $scope = $rootScope.$new();
+                sandbox = sinon.sandbox.create();
                 controller = $controller('MainController', {
                     $scope: scope,
                     $state:mocks.$state,
                     GameModel: mocks.GameModel,
                     StyleSelection: mocks.StyleSelection
-
-                });
+                })
 
             });
-
-            sandbox =sinon.sandbox.create();
-            stateSpy = sinon.sandbox.spy(mocks.$state,'go');
 
         });
 
         it.only('Ensures the game title is correct', function () {
-            console.log(controller);
-            console.log(controller.gameTitle);
-            controller.gameTitle.should.equal('Noughts and Crosses');
+                console.log(controller);
+                console.log(controller.gameTitle);
+                controller.gameTitle.should.equal('Noughts and Crosses');
+            });
+
+        afterEach(function(){
+            sandbox.restore();
         });
+
     });
 
 })();
+
+//sandbox =sinon.sandbox.create();
+//stateSpy = sinon.sandbox.spy(mocks.$state,'go');
 
 //(function () {
 //    'use strict';
