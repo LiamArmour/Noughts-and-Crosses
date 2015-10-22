@@ -22,6 +22,11 @@ var mocks = {
         toggleCss: function () {},
         getCurrentStyle: function(){}
 
-        }
+        },
+
+    $state:{
+        go: function () {},
+        $current: 'PlayerSelection'
+    }
 
 };
