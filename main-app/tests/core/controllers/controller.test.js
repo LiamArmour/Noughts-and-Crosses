@@ -30,6 +30,8 @@
         });
 
         it.only('Ensures the game title is correct', function () {
+            console.log(controller);
+            console.log(controller.gameTitle);
             controller.gameTitle.should.equal('Noughts and Crosses');
         });
     });

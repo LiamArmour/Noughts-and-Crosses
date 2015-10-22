@@ -26,7 +26,7 @@ var mocks = {
 
     $state:{
         go: function () {},
-        $current: 'PlayerSelection'
+        $current: 'playerSelection'
     }
 
 };
