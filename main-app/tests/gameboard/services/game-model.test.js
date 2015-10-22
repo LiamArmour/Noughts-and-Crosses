@@ -9,8 +9,8 @@
             $interval,
             $stateSpy,
             $rootScope,
-            winner1Data = {gameboard:'111111111', outcome:'Win', winner:''};
-            //winner1Data = {gameboard:'000000000', outcome:'Win', winner:''};
+            winner1Data = {gameboard:'111111111', outcome:'Win', winner:''},
+            takeTurnData = {"outcome":"Continue","gameboard":"120000000","winner":0};
 
         beforeEach(function () {
             module('ui.router');
@@ -51,18 +51,12 @@
         });
 
 
-
-        it('Ensures game board values are set', function () {
+        it(' New game game won sets values and ends', function () {
             var deferred = $q.defer();
-
-            var test = sinon.stub(mocks.GameProxy, 'apiCall');
-            //console.log(mocks.GameProxy);
-            test.returns(deferred.promise);
+            var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
+            newGameTest.returns(deferred.promise);
 
             gameModel.makeNewGame();
-
-            gameModel.gameBoard.should.equal('000000000');
-
             deferred.resolve(winner1Data);
             $rootScope.$digest();
 
@@ -70,20 +64,21 @@
             gameModel.gameWinner.should.equal(winner1Data.winner);
         });
 
+        it.skip('Ensures the take turn function works', function () {
+            var deferred = $q.defer();
+            var takeTurnTest = sinon.stub(mocks.GameProxy, 'apiCall');
+            takeTurnTest.returns(deferred.promise);
 
+            gameModel.takeTurn();
+            deferred.resolve(takeTurnData);
+            $rootScope.$digest();
 
-        //describe('New Game Updates on player 1 win', function(){
-        //
-        //
-        //
-        //    //it('Ensures the game state transfers to game winner', function () {
-        //    //    $interval.flush(5000);
-        //    //    mocks.$state.go.should.be.calledOnce;
-        //    //    mocks.$state.go.should.be.calledWith('gameWin');
-        //    //});
-        //});
+            //gameModel.gameBoard.should.equal(winner1Data.gameboard);
+            //gameModel.gameWinner.should.equal(winner1Data.winner);
+        });
 
         afterEach(function(){
+            //sinon.stub.reset();
             sandbox.restore();
         });
     });
