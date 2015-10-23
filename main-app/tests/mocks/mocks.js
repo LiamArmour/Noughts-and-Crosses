@@ -32,6 +32,7 @@ var mocks;
         GameApi: {
             createNewGameData: function(player1Type, player2Type){},
             createMakeMoveData: function (playerNumber, chosenSquare) {},
+            callApi: function () {},
             makeNewGame: function (player1Type, player2Type, updateCallback) {},
             takeTurn: function (playerNumber, squareNumber, updateCallback) {}
         },
