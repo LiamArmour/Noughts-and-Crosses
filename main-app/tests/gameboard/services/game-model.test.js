@@ -1,14 +1,14 @@
 (function () {
     'use strict';
     describe('Testing the game model service', function () {
-        var playerSelection,
-            gameModel,
+        var gameModel,
             sandbox,
             $q,
             $stateSpy,
             $rootScope,
             getStartingPlayerSpy,
             gameApiMakeNewGameSpy,
+            takeTurnSpy,
             makeNewGameData = {"outcome":"Continue","gameboard":"000000000","winner":0};
 
         beforeEach(function () {
@@ -25,6 +25,7 @@
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
             getStartingPlayerSpy = sinon.sandbox.spy(mocks.PlayerSelection, 'getStartingPlayer');
             gameApiMakeNewGameSpy = sinon.sandbox.spy(mocks.GameApi, 'makeNewGame');
+            takeTurnSpy = sinon.sandbox.spy(mocks.GameApi, 'takeTurn');
 
             inject(['$injector', function ($injector) {
                 gameModel = $injector.get('GameModel');
@@ -44,26 +45,6 @@
         it('ensure the there is no game winner at the start', function(){
             gameModel.gameWinner.should.equal('');
         });
-        //
-        //it('showTheGame should safely launch the game', function(){
-        //    var deferred = $q.defer();
-        //    validatePlayerStub = sandbox.stub(mocks.PlayerType, 'validatePlayerType', function(){return true;});
-        //    goSpy = sandbox.spy(mocks.$state, 'go');
-        //    sandbox.stub(mocks.PlayerType, 'getPlayer1', function(){return {type:'human'};});
-        //    sandbox.stub(mocks.PlayerType, 'getPlayer2', function(){return {type:'human'};});
-        //    sandbox.stub(mocks.GameServerProxy, 'APICall', function(){return deferred.promise;});
-        //
-        //    $scope.showTheGame();
-        //
-        //    deferred.resolve({
-        //        data:{
-        //            gameboard:'000000000',
-        //            outcome:'continue'
-        //        }});
-        //    $rootScope.$digest();
-        //    validatePlayerStub.should.have.been.calledTwice;
-        //    goSpy.should.have.been.calledOnce.calledWithExactly('game');
-        //});
 
         it('Ensures the new game function is working', function(){
             var deferred = $q.defer();
@@ -76,25 +57,18 @@
             $rootScope.$digest();
 
             getStartingPlayerSpy.should.have.been.calledOnce;
-
-            gameApiMakeNewGameSpy.should.have.been.calledOnce.calledWithExactly('human',  'human', function(){});
-
+            gameApiMakeNewGameSpy.should.have.been.calledOnce;
         });
 
         it('Ensures the take turn function is working', function(){
-
-            //
-            //me.takeTurn = function (index){
-            //
-            //    if (!squareIsFree(index)) {
-            //        return;
-            //    }
-            //    gameApi.takeTurn( me.currentPlayer,  index, updateGameBoard);
-            //};
-
+            gameModel.takeTurn(1);
+            takeTurnSpy.should.have.been.calledOnce;
         });
 
-
+        it('Ensures the take turn function will not take a incorrect value', function(){
+            gameModel.takeTurn(9);
+            takeTurnSpy.should.have.been.notCalled;
+        });
 
         afterEach(function(){
             sandbox.restore();
