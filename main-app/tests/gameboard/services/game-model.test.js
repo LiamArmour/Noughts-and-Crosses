@@ -8,6 +8,7 @@
             sandbox,
             $q,
             $stateSpy,
+            updateGameBoard,
             winner1Data = {gameboard:'111111111', outcome:'Win', winner:''};
 
         beforeEach(function () {
@@ -50,7 +51,9 @@
             newGameTest.returns(deferred.promise);
             console.log('do i work2');
 
-            gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, gameModel.updateGameBoard);
+
+            updateGameBoard = gameModel.updateGameBoard();
+            gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, updateGameBoard);
             console.log('do i work3');
             deferred.resolve(winner1Data);
             $rootScope.$digest();
