@@ -1,15 +1,14 @@
 (function () {
     'use strict';
-    describe('Testing the game model service', function () {
-        var playerSelection,
-            gameModel,
+    describe('Testing the game API service', function () {
+        var gameApi,
             sandbox,
             $stateSpy,
             $rootScope;
 
         beforeEach(function () {
             module('ui.router');
-            module('Tombola.Games.NoughtsAndCrosses.Game');
+            module('Tombola.Games.NoughtsAndCrosses.Core');
             module(function ($provide) {
                 $provide.value('GameProxy', mocks.GameProxy);
                 $provide.value('$state', mocks.$state);
@@ -20,7 +19,7 @@
 
             inject(['$rootScope', '$injector', function (_$rootScope_, $injector) {
                 $rootScope = _$rootScope_;
-                gameModel = $injector.get('GameApi');
+                gameApi = $injector.get('GameApi');
             }]);
         });
 
@@ -39,7 +38,7 @@
         //me.takeTurn = function (playerNumber, squareNumber, updateCallback) {
         //    callApi("makemove", createMakeMoveData(playerNumber, squareNumber), updateCallback);
         //};
-        
+
 
         afterEach(function(){
             //sinon.stub.reset();
