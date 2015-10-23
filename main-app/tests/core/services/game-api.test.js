@@ -23,17 +23,19 @@
             }]);
         });
 
-        it(' New game game won sets values and ends', function () {
+        it('Ensures the game sends the correct information to start', function () {
+            //me.makeNewGame = function (player1Type, player2Type, updateCallback) {
+            //    callApi("newgame", createNewGameData(player1Type, player2Type), updateCallback);
+            //};
+            gameApi.makeNewGame();
 
         });
 
-        it('Ensures the take turn function works', function () {
+        it('Ensures the game sends the correct infoirmation to take the turn', function () {
 
         });
 
-        //me.makeNewGame = function (player1Type, player2Type, updateCallback) {
-        //    callApi("newgame", createNewGameData(player1Type, player2Type), updateCallback);
-        //};
+
         //
         //me.takeTurn = function (playerNumber, squareNumber, updateCallback) {
         //    callApi("makemove", createMakeMoveData(playerNumber, squareNumber), updateCallback);
