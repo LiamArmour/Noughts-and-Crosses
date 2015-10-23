@@ -45,11 +45,13 @@
 
         it('Ensures the new game function is working', function(){
             var deferred = $q.defer();
+            console.log('do i work');
             var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
             newGameTest.returns(deferred.promise);
+            console.log('do i work2');
 
-            gameModel.makeNewGame();
-            gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, updateGameBoard);
+            gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, gameModel.updateGameBoard);
+            console.log('do i work3');
             deferred.resolve(winner1Data);
             $rootScope.$digest();
 
