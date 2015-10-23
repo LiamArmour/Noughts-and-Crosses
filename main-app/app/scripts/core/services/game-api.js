@@ -1,6 +1,5 @@
 (function () {
     'use strict';
-    //TODO: Unit test
     angular.module('Tombola.Games.NoughtsAndCrosses.Core')
         .service('GameApi',  ['GameProxy', function (gameProxy) {
             var me = this,
