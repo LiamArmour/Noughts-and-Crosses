@@ -4,7 +4,8 @@
         var gameApi,
             sandbox,
             $stateSpy,
-            $rootScope;
+            $rootScope,
+            apiCallStub;
 
         beforeEach(function () {
             module('ui.router');
@@ -27,7 +28,8 @@
             //me.makeNewGame = function (player1Type, player2Type, updateCallback) {
             //    callApi("newgame", createNewGameData(player1Type, player2Type), updateCallback);
             //};
-            gameApi.makeNewGame();
+            apiCallStub = sinon.stub(mocks.GameApi, 'human, human, updateCallback');
+            gameApi.makeNewGame(apiCallStub);
 
         });
 
