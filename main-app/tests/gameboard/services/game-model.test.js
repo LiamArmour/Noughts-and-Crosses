@@ -50,8 +50,7 @@
             var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
             newGameTest.returns(deferred.promise);
             console.log('do i work2');
-
-
+            
             updateGameBoard = gameModel.updateGameBoard();
             gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, updateGameBoard);
             console.log('do i work3');
