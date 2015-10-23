@@ -6,8 +6,10 @@
             sandbox,
             $q,
             $stateSpy,
-            updateGameBoard,
-            winner1Data = {gameboard:'111111111', outcome:'Win', winner:''};
+            $rootScope,
+            getStartingPlayerSpy,
+            gameApiMakeNewGameSpy,
+            makeNewGameData = {"outcome":"Continue","gameboard":"000000000","winner":0};
 
         beforeEach(function () {
             module('ui.router');
@@ -21,10 +23,13 @@
 
             sandbox = sinon.sandbox.create();
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
+            getStartingPlayerSpy = sinon.sandbox.spy(mocks.PlayerSelection, 'getStartingPlayer');
+            gameApiMakeNewGameSpy = sinon.sandbox.spy(mocks.GameApi, 'makeNewGame');
 
             inject(['$injector', function ($injector) {
                 gameModel = $injector.get('GameModel');
                 $q = $injector.get('$q');
+                $rootScope = $injector.get('$rootScope');
             }]);
         });
 
@@ -39,29 +44,40 @@
         it('ensure the there is no game winner at the start', function(){
             gameModel.gameWinner.should.equal('');
         });
+        //
+        //it('showTheGame should safely launch the game', function(){
+        //    var deferred = $q.defer();
+        //    validatePlayerStub = sandbox.stub(mocks.PlayerType, 'validatePlayerType', function(){return true;});
+        //    goSpy = sandbox.spy(mocks.$state, 'go');
+        //    sandbox.stub(mocks.PlayerType, 'getPlayer1', function(){return {type:'human'};});
+        //    sandbox.stub(mocks.PlayerType, 'getPlayer2', function(){return {type:'human'};});
+        //    sandbox.stub(mocks.GameServerProxy, 'APICall', function(){return deferred.promise;});
+        //
+        //    $scope.showTheGame();
+        //
+        //    deferred.resolve({
+        //        data:{
+        //            gameboard:'000000000',
+        //            outcome:'continue'
+        //        }});
+        //    $rootScope.$digest();
+        //    validatePlayerStub.should.have.been.calledTwice;
+        //    goSpy.should.have.been.calledOnce.calledWithExactly('game');
+        //});
 
         it('Ensures the new game function is working', function(){
             var deferred = $q.defer();
-            var newGameTest = sinon.stub(mocks.GameApi, 'apiCall');
-            newGameTest.returns(deferred.promise);
+
+            var apiCallStub = sinon.stub(mocks.GameApi, 'callApi');
+            apiCallStub.returns(deferred.promise);
 
             gameModel.makeNewGame();
-            console.log('do i work3');
-            gameModel.makeNewGame(playerSelection.player1Type, playerSelection.player2Type, updateGameBoard);
-
-            deferred.resolve(winner1Data);
+            deferred.resolve(makeNewGameData);
             $rootScope.$digest();
 
-            gameModel.isNewGame.should.equal(true);
-            gameModel.currentPlayer = playerSelection.getStartingPlayer();
+            getStartingPlayerSpy.should.have.been.calledOnce;
 
-
-
-            //me.makeNewGame = function(){
-            //    isNewGame = true;
-            //    me.currentPlayer = playerSelection.getStartingPlayer();
-            //    gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, updateGameBoard);
-            //};
+            gameApiMakeNewGameSpy.should.have.been.calledOnce.calledWithExactly('human',  'human', function(){});
 
         });
 
