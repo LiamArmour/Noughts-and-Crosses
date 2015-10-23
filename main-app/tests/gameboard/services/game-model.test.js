@@ -3,8 +3,6 @@
     describe('Testing the game model service', function () {
         var playerSelection,
             gameModel,
-            endOfGame,
-            gameApi,
             sandbox,
             $q,
             $stateSpy,
@@ -16,7 +14,8 @@
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
-                $provide.value('GameApi', mocks.GameProxy);
+                $provide.value('GameApi', mocks.GameApi);
+                $provide.value('EndOfGameService', mocks.EndOfGameService)
                 $provide.value('$state', mocks.$state);
             });
 
@@ -24,10 +23,7 @@
             $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
             inject(['$injector', function ($injector) {
-                playerSelection = $injector.get('PlayerSelection');
-                gameApi = $injector.get('GameApi');
                 gameModel = $injector.get('GameModel');
-                endOfGame = $injector.get('EndOfGameService');
                 $q = $injector.get('$q');
             }]);
         });
@@ -46,19 +42,26 @@
 
         it('Ensures the new game function is working', function(){
             var deferred = $q.defer();
-            console.log('do i work');
-            var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
+            var newGameTest = sinon.stub(mocks.GameApi, 'apiCall');
             newGameTest.returns(deferred.promise);
-            console.log('do i work2');
 
             gameModel.makeNewGame();
-            gameModel.makeNewGame(playerSelection.player1Type, playerSelection.player2Type, updateGameBoard);
             console.log('do i work3');
+            gameModel.makeNewGame(playerSelection.player1Type, playerSelection.player2Type, updateGameBoard);
+
             deferred.resolve(winner1Data);
             $rootScope.$digest();
 
             gameModel.isNewGame.should.equal(true);
             gameModel.currentPlayer = playerSelection.getStartingPlayer();
+
+
+
+            //me.makeNewGame = function(){
+            //    isNewGame = true;
+            //    me.currentPlayer = playerSelection.getStartingPlayer();
+            //    gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, updateGameBoard);
+            //};
 
         });
 

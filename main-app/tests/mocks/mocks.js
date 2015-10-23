@@ -28,6 +28,15 @@ var mocks;
         },
         $state: {
             go: function () {}
+        },
+        GameApi: {
+            createNewGameData: function(player1Type, player2Type){},
+            createMakeMoveData: function (playerNumber, chosenSquare) {},
+            makeNewGame: function (player1Type, player2Type, updateCallback) {},
+            takeTurn: function (playerNumber, squareNumber, updateCallback) {}
+        },
+        EndOfGameService: {
+            checkGameEnded: function(outcome){}
         }
     };
 })();
