@@ -7,7 +7,8 @@
             gameApi,
             sandbox,
             $q,
-            $stateSpy;
+            $stateSpy,
+            winner1Data = {gameboard:'111111111', outcome:'Win', winner:''};
 
         beforeEach(function () {
             module('ui.router');
@@ -43,17 +44,36 @@
         });
 
         it('Ensures the new game function is working', function(){
+            var deferred = $q.defer();
+            var newGameTest = sinon.stub(mocks.GameProxy, 'apiCall');
+            newGameTest.returns(deferred.promise);
+
+            gameModel.makeNewGame();
+            gameApi.makeNewGame(playerSelection.player1Type,  playerSelection.player2Type, updateGameBoard);
+            deferred.resolve(winner1Data);
+            $rootScope.$digest();
+
+            gameModel.isNewGame.should.equal(true);
+            gameModel.currentPlayer = playerSelection.getStartingPlayer();
 
         });
 
         it('Ensures the take turn function is working', function(){
+
+            //
+            //me.takeTurn = function (index){
+            //
+            //    if (!squareIsFree(index)) {
+            //        return;
+            //    }
+            //    gameApi.takeTurn( me.currentPlayer,  index, updateGameBoard);
+            //};
 
         });
 
 
 
         afterEach(function(){
-            //sinon.stub.reset();
             sandbox.restore();
         });
     });
