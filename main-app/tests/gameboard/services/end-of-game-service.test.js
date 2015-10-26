@@ -4,7 +4,9 @@
         var gameModel,
             sandbox,
             $stateSpy,
-            $rootScope;
+            $rootScope,
+            $scope,
+            $interval;
 
         beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses.Game');
@@ -19,10 +21,13 @@
             inject(['$injector', function ($injector) {
                 gameModel = $injector.get('EndOfGameService');
                 $rootScope = $injector.get('$rootScope');
+                $interval = $injector.get('$interval');
+                $scope = $rootScope.$new();
             }]);
         });
 
         it.skip('ensure the starting player is player one', function(){
+            $scope.checkGameEnded();
 
         });
 
