@@ -48,6 +48,13 @@
             state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-rules.html'));
         });
 
+        it('Ensures there is a state called game about and it can be accessed', function () {
+            var state = $state.get('gameAbout');
+            should.exist(state);
+            state.url.should.equal('/gameAbout');
+            state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-about.html'));
+        });
+
     });
 
 })();
