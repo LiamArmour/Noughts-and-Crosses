@@ -36,7 +36,8 @@
                     'main-app/tests/lobby/controllers/**/*.js',
                     'main-app/tests/lobby/services/**/*.js',
 
-                    'main-app/tests/mocks/mocks.js'
+                    'main-app/tests/mocks/mocks.js',
+                    'main-app/tests/template-cache/**/*.js'
                 ]
             }
     };
