@@ -17,7 +17,7 @@
                 controller:'LobbyController',
                 templateProvider:function ($templateCache){ return $templateCache.get("partials/player-selection.html");}
             })
-            .state('gameBaord', {
+            .state('gameBoard', {
                 url: "/gameBoard",
                 templateProvider:function ($templateCache){ return $templateCache.get("partials/game-board.html");}
             })

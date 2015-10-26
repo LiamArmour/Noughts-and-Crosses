@@ -5,8 +5,7 @@
             $timeout,
             $state,
             $rootscope,
-            $templateCache,
-            spyonState;
+            $templateCache;
 
         beforeEach(function () {
             module('Tombola.Games.NoughtsAndCrosses');
@@ -23,7 +22,6 @@
             $templateCache.put('partials/game-about.html', 'partials/game-about.html');
             $templateCache.put('partials/game-draw.html', 'partials/game-draw.html');
 
-            spyonState = sinon.sandbox.spy(mocks.fakeState, 'go');
             $rootscope.$digest();
 
         });
@@ -36,11 +34,18 @@
             state.templateProvider($templateCache).should.equal($templateCache.get('partials/player-selection.html'));
         });
 
-        it('Ensures there is a state called gamebaord and it can be accessed', function () {
-            var state = $state.get('gameBaord');
+        it('Ensures there is a state called gameboard and it can be accessed', function () {
+            var state = $state.get('gameBoard');
             should.exist(state);
-            state.url.should.equal('/gameBaord');
+            state.url.should.equal('/gameBoard');
             state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-board.html'));
+        });
+
+        it('Ensures there is a state called game rules and it can be accessed', function () {
+            var state = $state.get('gameRules');
+            should.exist(state);
+            state.url.should.equal('/rules');
+            state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-rules.html'));
         });
 
     });
