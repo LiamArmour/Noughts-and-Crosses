@@ -28,6 +28,18 @@
             controller.gameTitle.should.equal('Noughts and Crosses');
         });
 
+        it('Ensures the minion style is default', function () {
+            //controller.gameTitle.should.equal('Noughts and Crosses');
+        });
+
+        it('Ensures the theme change can be toggled', function () {
+            //controller.gameTitle.should.equal('Noughts and Crosses');
+        });
+
+        it('Ensures the make new game creates new game and chnages state', function () {
+            //controller.gameTitle.should.equal('Noughts and Crosses');
+        });
+
         afterEach(function(){
             sandbox.restore();
         });
