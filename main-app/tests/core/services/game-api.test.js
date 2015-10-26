@@ -24,11 +24,11 @@
             }]);
         });
 
-        it(' New game game won sets values and ends', function () {
+        it.skip(' New game game won sets values and ends', function () {
 
         });
 
-        it('Ensures the take turn function works', function () {
+        it.skip('Ensures the take turn function works', function () {
 
         });
 
