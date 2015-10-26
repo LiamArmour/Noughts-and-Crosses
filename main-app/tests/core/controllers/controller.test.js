@@ -42,12 +42,9 @@
         });
 
         it('Ensures the make new game creates new game and changes state', function () {
-            //controller.gameTitle.should.equal('Noughts and Crosses');
-
-//            $scope.makeNewGame= function (){
-////                gameModel.makeNewGame();
-////                $state.go('gameBaord');
-////            };
+            $scope.makeNewGame();
+            makeNewGameSpy.should.have.been.calledOnce;
+            stateSpy.should.have.been.calledOnce.calledWithExactly('gameBaord');
         });
 
         afterEach(function(){
