@@ -3,7 +3,7 @@
     describe('Testing the game model service', function () {
         var gameModel,
             sandbox,
-            $stateSpy,
+            stateSpy,
             $rootScope,
             $scope,
             $interval;
@@ -16,7 +16,7 @@
             });
 
             sandbox = sinon.sandbox.create();
-            $stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
+            stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
             inject(['$injector', function ($injector) {
                 gameModel = $injector.get('EndOfGameService');
@@ -26,9 +26,10 @@
             }]);
         });
 
-        it.skip('ensure the starting player is player one', function(){
-            $scope.checkGameEnded();
-
+        it('ensure check game ended works for a win', function(){
+            $scope.checkGameEnded('Win');
+            $interval.flush(5000);
+            stateSpy.should.have.been.calledOnce.calledWithExactly('gameWin');
         });
 
         afterEach(function(){
