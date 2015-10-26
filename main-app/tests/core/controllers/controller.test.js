@@ -5,11 +5,17 @@
         var $scope,
             controller,
             sandbox,
-            $rootScope;
+            $rootScope,
+            makeNewGameSpy,
+            stateSpy;
 
         beforeEach(function(){
             module('ui.router');
             module('Tombola.Games.NoughtsAndCrosses.Core');
+
+            makeNewGameSpy = sinon.sandbox.spy(mocks.GameModel, 'makeNewGame');
+            stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
+
             inject(function (_$rootScope_, $controller) {
                 $rootScope = _$rootScope_;
                 $scope = $rootScope.$new();
@@ -23,21 +29,25 @@
             });
         });
 
-
         it('Ensures the game title is correct', function () {
-            controller.gameTitle.should.equal('Noughts and Crosses');
+            $scope.gameTitle.should.equal('Noughts and Crosses');
         });
 
         it('Ensures the minion style is default', function () {
-            //controller.gameTitle.should.equal('Noughts and Crosses');
+            $scope.displayStyle.should.equal(mocks.StyleSelection);
         });
 
         it('Ensures the theme change can be toggled', function () {
-            //controller.gameTitle.should.equal('Noughts and Crosses');
+            $scope.changeStyle.should.equal(mocks.StyleSelection.toggleCss);
         });
 
-        it('Ensures the make new game creates new game and chnages state', function () {
+        it('Ensures the make new game creates new game and changes state', function () {
             //controller.gameTitle.should.equal('Noughts and Crosses');
+
+//            $scope.makeNewGame= function (){
+////                gameModel.makeNewGame();
+////                $state.go('gameBaord');
+////            };
         });
 
         afterEach(function(){
@@ -47,23 +57,3 @@
     });
 
 })();
-
-
-//sandbox =sinon.sandbox.create();
-//stateSpy = sinon.sandbox.spy(mocks.$state,'go');
-
-//(function () {
-//    'use strict';
-//    angular.module('Tombola.Games.NoughtsAndCrosses.Core')
-//
-//        .controller('MainController', ['$scope','$state','GameModel','StyleSelection',  function($scope, $state, gameModel, styleSelection) {
-//            $scope.gameTitle = 'Noughts and Crosses';
-//            $scope.displayStyle = styleSelection;
-//            $scope.changeStyle = styleSelection.toggleCss;
-//
-//            $scope.makeNewGame= function (){
-//                gameModel.makeNewGame();
-//                $state.go('gameBaord');
-//            };
-//        }]);
-//})();
