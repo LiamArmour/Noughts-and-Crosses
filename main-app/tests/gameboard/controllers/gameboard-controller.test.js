@@ -4,7 +4,6 @@
     describe('Testing the game board controller', function () {
         var $scope,
             controller,
-            sandbox,
             $rootScope;
 
         beforeEach(function(){
@@ -13,10 +12,8 @@
             inject(function (_$rootScope_, $controller) {
                 $rootScope = _$rootScope_;
                 $scope = $rootScope.$new();
-                sandbox = sinon.sandbox.create();
                 controller = $controller('GameBoardController', {
                     $scope: $scope,
-                    $state:mocks.$state,
                     GameModel: mocks.GameModel,
                 });
             });
