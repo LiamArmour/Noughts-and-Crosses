@@ -5,7 +5,8 @@
             sandbox,
             $stateSpy,
             $rootScope,
-            apiCallStub;
+            apiCallStub,
+            makeNewGameData = {"outcome":"Continue","gameboard":"000000000","winner":0};
 
         beforeEach(function () {
             module('ui.router');
@@ -28,7 +29,7 @@
             //me.makeNewGame = function (player1Type, player2Type, updateCallback) {
             //    callApi("newgame", createNewGameData(player1Type, player2Type), updateCallback);
             //};
-            apiCallStub = sinon.stub(mocks.GameApi, 'human, human, updateCallback');
+            apiCallStub = sinon.stub(mocks.GameApi, 'human, human, makeNewGameData');
             gameApi.makeNewGame(apiCallStub);
 
         });

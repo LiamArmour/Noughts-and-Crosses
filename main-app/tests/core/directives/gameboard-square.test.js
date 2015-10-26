@@ -15,7 +15,7 @@
         it('Ensure that the game board square directive inputs data for square 4', function() {
             var directiveElement = '<game-board-square square-number="3" class="cell"></game-board-square>';
 
-            $rootScope.gameBoard = function(){return [0,0,0,1,0,0,0,0,0]};
+            $rootScope.gameBoard = function(){return [0,0,0,1,0,0,0,0,0];};
             var element = $compile(directiveElement)($rootScope);
             $rootScope.$digest();
 
