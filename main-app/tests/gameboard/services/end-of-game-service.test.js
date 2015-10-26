@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     describe('Testing the game model service', function () {
-        var gameModel,
+        var endOfGameService,
             sandbox,
             stateSpy,
             $rootScope,
@@ -19,7 +19,7 @@
             stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
             inject(['$injector', function ($injector) {
-                gameModel = $injector.get('EndOfGameService');
+                endOfGameService = $injector.get('EndOfGameService');
                 $rootScope = $injector.get('$rootScope');
                 $interval = $injector.get('$interval');
                 $scope = $rootScope.$new();
@@ -27,9 +27,15 @@
         });
 
         it('ensure check game ended works for a win', function(){
-            $scope.checkGameEnded('Win');
+            endOfGameService.checkGameEnded('Win');
             $interval.flush(5000);
             stateSpy.should.have.been.calledOnce.calledWithExactly('gameWin');
+        });
+
+        it('ensure check game ended works for a draw', function(){
+            endOfGameService.checkGameEnded('Draw');
+            $interval.flush(5000);
+            stateSpy.should.have.been.calledOnce.calledWithExactly('gameDraw');
         });
 
         afterEach(function(){
@@ -37,20 +43,3 @@
         });
     });
 }());
-
-//(function () {
-//    'use strict';
-//    angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-//        .service('EndOfGameService', ['$state', '$interval', function($state, $interval) {
-//            var me = this;
-//            me.checkGameEnded = function(outcome){
-//                $interval(function(){
-//                    if (outcome === "Win") {
-//                        $state.go('gameWin');
-//                    } else if (outcome === "Draw") {
-//                        $state.go('gameDraw');
-//                    }
-//                },5000, 1);
-//            };
-//        }]);
-//})();
