@@ -5,16 +5,10 @@
         var $scope,
             controller,
             sandbox,
-            $rootScope,
-            makeNewGameSpy,
-            stateSpy;
+            $rootScope;
 
         beforeEach(function(){
-            module('ui.router');
             module('Tombola.Games.NoughtsAndCrosses.Game');
-
-            makeNewGameSpy = sinon.sandbox.spy(mocks.GameModel, 'makeNewGame');
-            stateSpy = sinon.sandbox.spy(mocks.$state, 'go');
 
             inject(function (_$rootScope_, $controller) {
                 $rootScope = _$rootScope_;
@@ -28,12 +22,8 @@
             });
         });
 
-        it.skip('Ensures the game title is correct', function () {
-            $scope.gameTitle.should.equal('Noughts and Crosses');
-        });
-
-        afterEach(function(){
-            sandbox.restore();
+        it('Ensures the game is loaded correctly', function () {
+            $scope.model.should.equal(mocks.GameModel);
         });
 
     });
