@@ -20,7 +20,7 @@
             $templateCache.put('partials/game-board.html', 'partials/game-board.html');
             $templateCache.put('partials/game-rules.html', 'partials/game-rules.html');
             $templateCache.put('partials/game-about.html', 'partials/game-about.html');
-            $templateCache.put('partials/game-draw.html', 'partials/game-win.html');
+            $templateCache.put('partials/game-win.html', 'partials/game-win.html');
             $templateCache.put('partials/game-draw.html', 'partials/game-draw.html');
 
             $rootscope.$digest();
