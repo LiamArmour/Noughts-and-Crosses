@@ -20,6 +20,7 @@
             $templateCache.put('partials/game-board.html', 'partials/game-board.html');
             $templateCache.put('partials/game-rules.html', 'partials/game-rules.html');
             $templateCache.put('partials/game-about.html', 'partials/game-about.html');
+            $templateCache.put('partials/game-draw.html', 'partials/game-win.html');
             $templateCache.put('partials/game-draw.html', 'partials/game-draw.html');
 
             $rootscope.$digest();
@@ -53,6 +54,13 @@
             should.exist(state);
             state.url.should.equal('/gameAbout');
             state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-about.html'));
+        });
+
+        it('Ensures there is a state called game win and it can be accessed', function () {
+            var state = $state.get('gameWin');
+            should.exist(state);
+            state.url.should.equal('/win');
+            state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-win.html'));
         });
 
     });
