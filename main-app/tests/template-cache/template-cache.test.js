@@ -36,6 +36,13 @@
             state.templateProvider($templateCache).should.equal($templateCache.get('partials/player-selection.html'));
         });
 
+        it('Ensures there is a state called gamebaord and it can be accessed', function () {
+            var state = $state.get('gameBaord');
+            should.exist(state);
+            state.url.should.equal('/gameBaord');
+            state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-board.html'));
+        });
+
     });
 
 })();
