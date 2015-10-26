@@ -63,6 +63,13 @@
             state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-win.html'));
         });
 
+        it('Ensures there is a state called game draw and it can be accessed', function () {
+            var state = $state.get('gameDraw');
+            should.exist(state);
+            state.url.should.equal('/draw');
+            state.templateProvider($templateCache).should.equal($templateCache.get('partials/game-draw.html'));
+        });
+
     });
 
 })();
