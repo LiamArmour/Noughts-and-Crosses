@@ -35,7 +35,7 @@
 
         });
 
- 
+
         //
         //me.takeTurn = function (playerNumber, squareNumber, updateCallback) {
         //    callApi("makemove", createMakeMoveData(playerNumber, squareNumber), updateCallback);
