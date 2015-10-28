@@ -15,27 +15,27 @@
             .state('playerSelection', {
                 url: "/playerSelection",
                 controller:'LobbyController',
-                templateUrl: "partials/player-selection.html",
+                templateProvider:function ($templateCache){ return $templateCache.get("partials/player-selection.html");}
             })
-            .state('gameBaord', {
+            .state('gameBoard', {
                 url: "/gameBoard",
-                templateUrl: "partials/game-board.html",
+                templateProvider:function ($templateCache){ return $templateCache.get("partials/game-board.html");}
             })
             .state('gameRules', {
                 url: "/rules",
-                templateUrl: "partials/game-rules.html",
+                templateProvider:function ($templateCache){ return $templateCache.get("partials/game-rules.html");}
             })
             .state('gameAbout', {
                 url: "/gameAbout",
-                templateUrl: "partials/game-about.html",
+                templateProvider:function ($templateCache){ return $templateCache.get("partials/game-about.html");}
             })
             .state('gameWin', {
                 url: "/win",
-                templateUrl: "partials/game-win.html",
+                templateProvider:function ($templateCache){ return $templateCache.get("partials/game-win.html");}
             })
             .state('gameDraw', {
                 url: "/draw",
-                templateUrl: "partials/game-draw.html",
+                templateProvider:function ($templateCache){ return $templateCache.get("partials/game-draw.html");}
             });
     }]);
 
