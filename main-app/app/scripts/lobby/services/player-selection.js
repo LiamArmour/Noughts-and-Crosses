@@ -15,14 +15,28 @@
                 var playerTypeName = 'player' + playerNumber + 'Type';
                 me[playerTypeName] = selectCharacter(me[playerTypeName]);
             };
-            me.getStartingPlayer = function(){
-                if (me.player1Type !== humanPlayer && me.player2Type === humanPlayer){
-                    return 2;
-                }
-                return 1;
+
+            me.isPlayer1Human = function (){
+                return me.player1Type === humanPlayer;
             };
+
+            me.isPlayer2Human = function (){
+                return me.player2Type === humanPlayer;
+            };
+
             me.isHumanVsHuman = function(){
-                return me.player1Type === humanPlayer && me.player2Type === humanPlayer;
+                return me.isPlayer1Human() && me.isPlayer2Human();
+            };
+
+            //TODO: add unit test
+            me.getStartingPlayer = function(){
+                if (!me.isPlayer2Human()){
+                    return 1;
+                }
+                if (me.isPlayer1Human()){
+                    return 1;
+                }
+                return 2;
             };
         }]);
 })();

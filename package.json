@@ -29,7 +29,9 @@
     "phantomjs": "~1.9.18",
     "karma-phantomjs-launcher": "~0.2.1",
     "grunt-contrib-uglify": "~0.9.2",
-    "karma": "~0.13.10"
+    "karma": "~0.13.10",
+    "karma-tape-reporter": "~1.0.3",
+    "karma-story-reporter": "~0.3.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

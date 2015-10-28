@@ -7,6 +7,14 @@
             dest:'.build/scripts/app.js',
             expand:false
         },
+        tests:{
+            cwd:'',
+            src:['main-app/tests/**/*.js'],
+            expand:false,
+            options: {
+                '-W030': true
+            }
+        },
         gruntlint:{
             src:'.grunt/**/*.js'
         }
