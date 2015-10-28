@@ -47,7 +47,6 @@ var mocks;
             getCurrentStyle: function(){}
 
         },
-
         $state:{
             go: function () {},
             $current: 'playerSelection'
