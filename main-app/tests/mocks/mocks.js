@@ -1,7 +1,7 @@
 var mocks;
 (function () {
     'use strict';
-    mocks = {
+    var mocks = {
         ProxyConstants: {
             baseURL: "http://eutaveg-01.tombola.emea:35000/api/v1.0/"
         },
@@ -26,9 +26,6 @@ var mocks;
         GameProxy: {
             apiCall: function () {}
         },
-        $state: {
-            go: function () {}
-        },
         fakeState: {
             go: function () {}
         },
@@ -41,6 +38,19 @@ var mocks;
         },
         EndOfGameService: {
             checkGameEnded: function(outcome){}
+        },
+
+        StyleSelection:{
+            cssStyleChange: function () {},
+            currentStyle: 'css/minion.css',
+            toggleCss: function () {},
+            getCurrentStyle: function(){}
+
+        },
+
+        $state:{
+            go: function () {},
+            $current: 'playerSelection'
         }
     };
 })();
