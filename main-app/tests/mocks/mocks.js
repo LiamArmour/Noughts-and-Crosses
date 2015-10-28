@@ -29,6 +29,9 @@ var mocks;
         $state: {
             go: function () {}
         },
+        fakeState: {
+            go: function () {}
+        },
         GameApi: {
             createNewGameData: function(player1Type, player2Type){},
             createMakeMoveData: function (playerNumber, chosenSquare) {},
