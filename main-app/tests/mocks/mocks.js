@@ -50,6 +50,11 @@ var mocks;
         $state:{
             go: function () {},
             $current: 'playerSelection'
+        },
+
+        Sound:{
+            currentlyPlaying: false,
+            playSound: function(){}
         }
     };
 })();
