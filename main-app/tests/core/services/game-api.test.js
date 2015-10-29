@@ -5,8 +5,8 @@
             sandbox,
             $stateSpy,
             $rootScope,
-            apiCallStub,
             apiTakeTurnStub,
+            apiMakeGame = "human, human, updateCallback",
             makeNewGameData = {"outcome":"Continue","gameboard":"000000000","winner":0};
 
         beforeEach(function () {
@@ -28,14 +28,17 @@
 
 
         it('Ensures the game sends the correct information to start', function () {
-            apiCallStub = sinon.stub(mocks.GameApi, 'human, human, makeNewGameData');
-            gameApi.makeNewGame(apiCallStub);
+            gameApi.makeNewGame(apiMakeGame);
 
         });
 
         it('Ensures the game sends the correct information to make a new turn', function () {
             apiTakeTurnStub = sinon.stub(mocks.GameApi, '1, 4, updateCallback');
-            gameApi.makeNewGame(apiTakeTurnStub);
+            gameApi.takeTurn(apiTakeTurn);
+
+            //sandbox.stub(mocks.PlayerType, 'getPlayer1', function(){
+            //    return {type:'human'};
+            //})
 
         });
 
@@ -49,7 +52,7 @@
 
 
         afterEach(function(){
-            sinon.stub.reset();
+            //sinon.stub.reset();
             sandbox.restore();
         });
     });
