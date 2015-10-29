@@ -9,7 +9,7 @@
 
             $scope.makeNewGame= function (){
                 gameModel.makeNewGame();
-                $state.go('gameBaord');
+                $state.go('gameBoard');
             };
         }]);
 })();

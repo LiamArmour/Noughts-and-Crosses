@@ -44,7 +44,7 @@
         it('Ensures the make new game creates new game and changes state', function () {
             $scope.makeNewGame();
             makeNewGameSpy.should.have.been.calledOnce;
-            stateSpy.should.have.been.calledOnce.calledWithExactly('gameBaord');
+            stateSpy.should.have.been.calledOnce.calledWithExactly('gameBoard');
         });
 
         afterEach(function(){
