@@ -13,7 +13,7 @@
 
             me.playSound = function(startTime, duration){
                 if(!me.currentlyPlaying) {
-                    audio = angular.element('#soundplayer');
+                    audio = angular.element('#playsounds');
                     audio.prop('currentTime', startTime);
                     audio.get(0).play();
                     me.currentlyPlaying = true;
