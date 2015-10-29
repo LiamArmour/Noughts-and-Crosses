@@ -5,7 +5,7 @@
             return {
                 restrict: 'E',
                 link: function postlink (scope, iElement, iAttrs, controller){
-                    iElement.append(angular.element('<audio id="playsounds"><source src="sound/game-sounds.mp3" type="audio/mp3"/></audio>'));
+                    iElement.append(angular.element('<audio id="playsounds"><source src="sounds/sounds.mp3" type="audio/mp3"/></audio>'));
                 }
             };
         });

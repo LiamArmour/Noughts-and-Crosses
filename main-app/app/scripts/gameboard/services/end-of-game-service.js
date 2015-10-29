@@ -7,10 +7,11 @@
                 $interval(function(){
                     if (outcome === "Win") {
                         $state.go('gameWin');
+                        sound.playSound(0, 5);
                     } else if (outcome === "Draw") {
                         $state.go('gameDraw');
+                        sound.playSound(5, 10);
                     }
-                    sound.playSound(0, 30);
                 },5000, 1);
             };
         }]);
