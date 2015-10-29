@@ -17,7 +17,7 @@
             module(function ($provide) {
                 $provide.value('PlayerSelection', mocks.PlayerSelection);
                 $provide.value('GameApi', mocks.GameApi);
-                $provide.value('EndOfGameService', mocks.EndOfGameService)
+                $provide.value('EndOfGameService', mocks.EndOfGameService);
                 $provide.value('$state', mocks.$state);
             });
 

@@ -12,6 +12,7 @@
             module('Tombola.Games.NoughtsAndCrosses.Game');
             module(function ($provide) {
                 $provide.value('$state', mocks.$state);
+                $provide.value('Sound', mocks.Sound);
             });
 
             sandbox = sinon.sandbox.create();
